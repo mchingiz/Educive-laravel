@@ -1,0 +1,31 @@
+.animateRight{
+	position:relative;
+	animation: animateRight 1s ease;
+	animation-play-state: paused;}
+
+	@keyframes animateRight {
+		 0% {
+			left:-1500px;
+			opacity: 0;}
+		 55% {
+			left:10px;
+			opacity: .8;}
+		 100% {
+			left:0px;
+			opacity: 1;}}
+
+.animateLeft{
+	position:relative;
+	animation: animateLeft .6s ease;
+	animation-play-state: paused;}
+
+	@keyframes animateLeft {
+		 0% {
+			right:-1500px;
+			opacity:0;}
+		 55% {
+			right:10px;
+			opacity:.8;}
+		100% {
+			right:0px;
+			opacity:1;}}

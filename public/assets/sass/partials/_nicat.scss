@@ -1,0 +1,103 @@
+
+#pages {
+    a{
+        font-size: 12px;
+    }
+    font-size: 12px;
+	h4{
+		color: #000;
+	    font-size: 14px;
+	    font-weight: 600;
+	    line-height: 20px;
+	}
+	.media-object{
+	margin-left: -15px;
+	display: block;
+}
+.headline-row h1 {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding-right: 20px;
+    padding-left: 5px;
+}
+.caticon i {
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    display: inline-block;
+    position: absolute;
+    z-index: 3;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    padding-top: 1px;
+}
+.mainPhoto{
+    margin: 15px;
+}
+.sbx i {
+    padding: 15px 0 15px 4px !important;
+    font-size: 14px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+h1.caticon span {
+    display: inline-block;
+    border-radius: 6px;
+    margin-right: 15px;
+    width: 27px;
+    height: 27px;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #fa5b0d;
+}
+.test span{
+    display: inline-block;
+    border-radius: 6px;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #fa5b0d;
+}
+.test span i{
+	margin-left:-11px;
+    margin-top: 3px;
+	font-size: 12px;
+
+}
+a{
+	color: black;
+}
+ul.post-tags li, .section-post-comment button.btn-primary {
+    display: inline-block;
+    background: #93b228;
+    margin-bottom: 5px;
+    border: 0px solid #f1f2f5;
+    color: #fff;
+    padding: 10px 30px;
+}
+ul.post-tags li:hover, .section-post-comment button.btn-primary:hover {
+    border: 0px solid #1d2537;
+    color: #fff;
+    background: #1d2537;
+    text-decoration: none;
+}
+.post {
+    position: relative;
+}
+
+}
