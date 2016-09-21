@@ -1,5 +1,16 @@
+//Navbar hover function
+
+function Navbar(){
+    if($(window).width()<1200){
+        $(".dropdown-toggle").attr("data-toggle","dropdown")
+    }
+    else{
+       $(".dropdown-toggle").removeAttr("data-toggle","dropdown")
+    }
+}
+
 jQuery(document).ready(function($) {
-	
+
 	// Slider
 	var current=1; // Currently active item
 	var items=3; // Total number of slider items
@@ -27,56 +38,19 @@ jQuery(document).ready(function($) {
 		// Chooses currently active element and sets play-state to running
 		$(".animateLeft").css("animation-play-state","running");
 	})
-	
+
 	// Special Items
 	$("#special .col-md-2").hover(function(){
 		$("#special .col-md-2").css("opacity",".3");
 		$(this).css("opacity","1");
-		
+
 	},function(){
 		$("#special .col-md-2").css("opacity","1");
 	})
+
+    Navbar();
 });
-    
-    
-// Navbar
-    
-    
-/*$("#header .dropdown").mouseenter(function(){
-    if( $(window).width()>768){
-    
-    $(this).find(">a").css("color","#F44336")
-    $(this).find(".dropdown-menu").slideDown()
-    }
- })
-$("#header .dropdown").mouseleave(function(){
-    if( $(window).width()>768){
-    $(this).find(">a").css("color","white")
-    $(this).find(".dropdown-menu").slideUp();
-    }
- })*/
 
-    var dropp1=0;
-$('#drop11').click(function (argument) {
-    if (dropp1==0) {
-    $('#drop1').css('display','block')
-    dropp1=1;
-}
-else{
-     $('#drop1').css('display','none')
-    dropp1=0;
-}
-})
+//Navbar
 
-
-
-
-$('#drop11').hover(function() {
-    
-    $('#drop1').css('display','block')
-}, function() {
-    $('#drop1').css('display','none')
-});
-    
-   
-    
+$(window).resize(Navbar)

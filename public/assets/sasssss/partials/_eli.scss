@@ -1,0 +1,107 @@
+.section-main-content{
+	
+
+
+		.post{
+			margin-bottom: 30px;
+		}
+		.post img:hover {
+			opacity: 0.5;
+    		background: #000;
+		}
+		.post-txt {
+			
+			h3{
+			margin: 0;
+			color: #000;
+		    font-weight: 600;
+		    font-size: 16px;
+		    line-height: 1.1 !important;
+			margin-bottom: 10px;
+
+			}
+			a{	
+				
+				color: #000 !important;
+			}
+			.caticon{
+				font-size: 12px ;
+			}
+
+			p{
+				padding: 10px 0;
+				font-size: 14px;
+				color: #000;
+				line-height: 22px;
+				font-weight: 300;
+			}
+		}
+
+		.lifestyle{
+		background-color: #f2388a;
+		display: inline-block;
+	    border-radius: 6px;
+	    margin-right: 15px;
+	    width: 27px;
+	    height: 27px;
+	    text-align: center;
+	    vertical-align: middle;
+	    transform: rotate(45deg);
+		}
+		.headline-row i {
+	    color: #fff;
+	    font-style: normal;
+	    font-weight: 700;
+	    font-size: 16px ;
+	    width: 27px;
+	    height: 27px ;
+	    padding-top: 9px ;
+		display: inline-block;
+	    position: absolute;
+	    z-index: 3;
+	    text-align: center;
+	    
+	}
+		.headline-row h1 {
+	    background: #fff;
+	    
+	    padding-right: 20px;
+	    padding-left: 5px;
+	    
+	    z-index: 1;
+	   
+	    padding-right: 20px;
+	    padding-left: 5px;
+		font-size: 30px;
+	}
+		.headline-row:after {
+	    background: #ddd;
+	    display: block;
+	    height: 1px;
+	    top: 55%;
+	    width: 100%;
+	    left: 0;
+	    position: absolute;
+	}
+
+}
+
+// Small devices (landscape phones, 544px and up)
+@media (min-width: 544px) { 
+	
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) { 
+	.post-txt h3{
+		font-size: 24px !important;
+	} 
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+	font-size:20px ;
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { }

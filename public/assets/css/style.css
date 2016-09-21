@@ -384,17 +384,19 @@
     #header .navbar .form-group button {
       border-radius: 0;
       border-color: transparent;
-      margin-left: -43px; }
+      margin-left: -40px; }
       #header .navbar .form-group button i {
         color: #F44336; }
     #header .navbar .collapsed-form {
-      margin-top: 12px; }
+      margin-top: 12px;
+      display: none; }
       #header .navbar .collapsed-form .form-control {
         width: 70%;
         padding: 3px 3px;
         height: auto;
         border: none; }
       #header .navbar .collapsed-form button {
+        margin-left: -20px;
         margin-top: -2px;
         padding: 3px;
         border: none; }
@@ -429,6 +431,9 @@
 @media (max-width: 768px) {
   #footer div {
     text-align: center; } }
+@media (min-width: 1200px) {
+  .dropdown:hover .dropdown-menu {
+    display: block !important; } }
 @media (max-width: 1200px) {
   .navbar-header {
     float: none; }
@@ -462,7 +467,13 @@
     padding-bottom: 10px; }
 
   .collapse.in {
-    display: block !important; } }
+    display: block !important; }
+
+  .collapsed-form {
+    display: block !important; }
+
+  .full-width-form {
+    display: none !important; } }
 #author h1 {
   font-size: 48px;
   font-weight: 600;

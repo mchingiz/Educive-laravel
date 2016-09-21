@@ -1,0 +1,269 @@
+#index{
+	// General styles
+	h1,h2,h3,h4,h5,h6{
+		margin:0;
+		font-family: 'Raleway';
+	}
+	p{
+		font-family: 'Lato';
+		font-size:20px;
+		font-weight: 400;
+	}
+	.deadline{
+		font-family: 'Lato';
+		font-size:14px;
+	}
+	.fa-clock-o{
+		background-color:$reddl;
+		border-radius:100%;
+		color:#fff;
+		font-size:13px;
+		padding:7px;
+	}
+	
+	//Custom classes
+	.sectionHeader{
+		padding-top:30px;
+		display:block;
+		position: relative;
+		overflow: hidden;
+		h1{
+			display: inline-block;
+			padding-right: 30px;
+		}
+		&:after{
+			background-color: darkslategray;
+			content:"";
+			display: inline-block;
+			position: absolute;
+			top:70%;
+			height: 1px;
+			width:100%;
+		}
+	}
+	
+	//Item style for all categories
+		//Style for all item sizes
+	.item{
+		position:relative;
+		.itemImg{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			img{
+				height:100%;
+				width:100%;
+			}
+		}
+		.gradient{
+			position: absolute;
+			top:0; left:0;
+			width:100%;
+			height: 100%;
+			background: -moz-linear-gradient(bottom,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 26%, rgba(0,0,0,0) 58%, rgba(0,0,0,0) 100%);
+			background: -webkit-linear-gradient(bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 26%,rgba(0,0,0,0) 58%,rgba(0,0,0,0) 100%);
+			background: linear-gradient(to top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 26%,rgba(0,0,0,0) 58%,rgba(0,0,0,0) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+
+		}
+		.itemContent{
+			h1{
+				font-weight: bold;
+				padding-top: 10px;
+				padding-bottom:10px;
+			}
+			.deadline{
+				padding-left:5px;
+			}
+			p{
+				padding-top: 10px;
+			}
+		}
+		.innerItemContent{
+			padding:15px;
+			position: absolute;
+			bottom:0; left:0;
+			h1{
+				font-size:17px;
+				color:#fff;
+			}
+			p{
+				color:#fff;
+			}
+			.deadline{
+				color:#fff;
+			}
+		}
+		.outerItemContent{
+			.deadline{
+				color:#000;
+			}
+			h1{
+				font-size:23px;
+			}
+		}
+	}
+		//Style for small items
+	.smallItem{
+		.smallItemImg{
+			padding:0;
+			height:75px;
+			width: 87px;
+			overflow:hidden;
+			img{
+				height:100%;
+			}
+		}
+		.smallItemContent{
+			h1{
+				font-size:15px;
+				font-weight: bold;
+			}
+		}
+	}
+		//Style for medium items
+	.mediumItem{
+		height: auto;
+		.itemImg{
+			height: 180px;
+		}
+	}
+		//Styles for big items
+	.bigItem{
+		height:400px;
+		.itemContent{
+			padding:25px;
+			h1{
+				font-size:30px;
+			}
+		}
+	}
+	.specialItem{
+		.itemContent{
+			padding-top:10px;
+			h1{
+				font-size:15px;
+				padding-bottom:10px;
+			}
+		}
+		.itemImg{
+			width:100%;
+			height: 110px;
+		}
+	}
+		//Styles for slider
+	.slider{
+		height: 400;
+		overflow: hidden;
+		.fa-chevron-left, .fa-chevron-right {
+			position: absolute;
+			cursor:pointer;
+			color:#fff;
+			font-size:40px;
+			top:170px;
+			opacity: .65;
+			&:hover{
+				opacity: 1;
+			}
+		}
+		.fa-chevron-left{
+			left:25px;
+		}
+		.fa-chevron-right{
+			right:25px;
+		}
+	}
+	
+	//Custom styles
+	#upcoming{
+		.col-md-9{
+			.row{
+				padding:15px 0;
+				.col-md-4{
+					.col-md-12{
+						padding:0;
+					}
+				}
+			}
+			#row2{
+				.gradient{
+					height: 180px;
+				}
+			}
+		}
+	}
+	#vacancies{
+		padding-top:25px;
+		padding:15px 0;
+		margin:0;
+		.row{ //Small items
+			padding-top:20px;
+		}
+	}
+	#special{
+		padding-top:25px;
+		.col-md-2{
+			transition-duration: .2s;
+		}
+	}
+}
+
+//Respnsiveness
+@media (min-width: 768px) and (max-width: 992px) {
+	#upcoming{
+		#row1{
+			.bigItem{
+				margin-bottom:30px;
+			}
+			.col-sm-6{
+				&:first-child{
+					padding-right:15px !important;
+				}
+				&:last-child{
+					padding-left:15px !important;
+				}
+			}
+		}
+	}
+	#vacancies{
+		.item {
+			padding-top:20px;
+			.smallItemContent{
+				padding-left:15px;
+			}
+		}
+	}
+}//End of media query for 768-992px screens
+
+@media (max-width: 768px) {
+	.row{
+		padding-top:0 !important;
+		.item{
+			margin-top:20px;
+			.itemImg{
+				height: 400px !important;
+			}
+		}
+		.specialItem{
+			.itemImg{
+				height: 100px !important;
+			}
+		}
+	}
+	#upcoming{
+		#row2{
+				.gradient{
+					height: 400px !important;
+				}
+		}
+	}
+	#vacancies{
+			.smallItemContent{
+				padding-left:15px;
+			}
+			.mediumItem{
+				padding-top:0 !important;
+			}
+	}
+}//End of media query for max 768px screens
+
