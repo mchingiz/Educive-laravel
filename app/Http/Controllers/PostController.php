@@ -12,13 +12,14 @@ use App\User;
 
 class PostController extends Controller
 {
+
 	public function store(Request $request, User $user){
-		// $this->validate($request,[
-		// 	'title' => 'required|min:10|max:150',
-		// 	'body' => 'required|min:5|',
-		// 	// 'image' => 'required'
-		// 	'deadline' => 'required'
-		// ]);
+		$this->validate($request,[
+			'title' => 'required|min:10|max:150',
+			'body' => 'required|min:5|',
+			// 'image' => 'required'
+			'deadline' => 'required'
+		]);
 
 		$newPost = new Post;
 
@@ -51,9 +52,6 @@ class PostController extends Controller
 			'body' => $request->body,
 			'deadline' => $request->deadline,
 		]);
-		// $post->title = $request->title;
-		// $post->body = $request->body;
-		// $post->deadline = $request->deadline;
 
 		if($request->file('image')){
 			$newPost = new Post;
@@ -73,5 +71,26 @@ class PostController extends Controller
 		}
 
 		return back();
+	}
+
+
+	public function deleteCheck(){
+		return view('post.delete');}
+
+	public function delete(Post $post){
+		$post->delete();
+		return 'deleted';
+	}
+
+	public function unpublishCheck(){
+		return view('post.delete');}
+
+	public function unpublish(Post $post){
+
+	}
+	
+	public function allposts(User $user){
+		$posts = $user->posts;
+		return view('post.posts', compact('posts'));
 	}
 }

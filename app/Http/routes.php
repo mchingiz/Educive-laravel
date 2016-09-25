@@ -36,11 +36,21 @@ Route::get('/add', function () {
     return view('post.add');
 });
 
+// Posts
+
 Route::post('/user/{user}/addnews','PostController@store');
 
 Route::get('/post/{post}','PostController@edit');
-
 Route::post('/post/{post}','PostController@update');
+
+Route::get('/post/delete/{post}/','PostController@deleteCheck');
+Route::post('/post/delete/{post}','PostController@delete');
+Route::get('/post/unpublish/{post}/','PostController@unpublishCheck');
+Route::post('/post/unpublish/{post}','PostController@unpublish');
+
+Route::get('/user/{user}','PostController@allposts');
+
+// End of posts
 
 Route::auth();
 
