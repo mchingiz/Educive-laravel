@@ -72,10 +72,15 @@
                	<button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
             	</div>
          	</form>
+				@if (Auth::guest())
          	<ul class="nav navbar-nav navbar-right">
-         		<li><a id="signUp" href="#">Sign up</a></li>
-         		<li><a href="#">Log in</a></li>
+         		<li><a id="signUp" href="/register">Sign up</a></li>
+         		<li><a href="/login">Log in</a></li>
          	</ul>
+				@else
+					<p style='color:white'>Hi, {{ Auth::user() -> name }} </p>
+					<a href='/logout'>Logout</a>
+				@endif
          </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
    </nav>
