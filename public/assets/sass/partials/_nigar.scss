@@ -5,8 +5,8 @@
         border-radius:0;
         border:none;
         //Brand and nav-items font
-        a{ 
-            
+        a{
+
             font-family: 'Raleway', sans-serif;
             color:white;
         }
@@ -14,7 +14,7 @@
             button{
                 i {color:white;}
             }
-            
+
         }
         ul{
             .active{
@@ -47,7 +47,7 @@
                 }
             }
         }
-        
+
         .form-group{
             .form-control{
                 display:inline-block !important;
@@ -55,7 +55,7 @@
             }
             input{
                 margin-right:-4px;
-                border-radius:0; 
+                border-radius:0;
             }
             button{
                 border-radius:0;
@@ -78,11 +78,11 @@
                 margin-top:-2px;
                 padding:3px;
                 border:none;
-                    
+
             }
         }
-    }   
-    
+    }
+
 }
 
 #footer{
@@ -111,7 +111,7 @@
             }
         }
     }
-     
+
 }
 
 @media (min-width: 768px) {
@@ -143,9 +143,6 @@
     .navbar-header {
         float: none;
     }
-    .navbar-left,.navbar-right {
-        float: none !important;
-    }
     .navbar-toggle {
         display: block;
     }
@@ -153,16 +150,12 @@
         border-top: 1px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }
-    .navbar-fixed-top {
-        top: 0;
-        border-width: 0 0 1px;
-    }
     .navbar-collapse.collapse {
         display: none!important;
     }
     .navbar-nav {
         float: none!important;
-        margin-top: 7.5px;
+        margin: 7.5px -15px;
     }
     .navbar-nav>li {
         float: none;
@@ -171,13 +164,16 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .collapse.in{
-        display:block !important;
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
     }
-    .collapsed-form{
-        display:block !important;
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block!important;
     }
-    .full-width-form{
-        display:none !important;
+    .collapsing {
+        overflow: hidden!important;
     }
+}
 }
