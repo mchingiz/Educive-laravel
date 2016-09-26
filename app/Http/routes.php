@@ -46,6 +46,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/menu', 'MenuController@show');
+
+Route::get('/deletemenu/{id}', 'MenuController@delete');
+
 
 
 
