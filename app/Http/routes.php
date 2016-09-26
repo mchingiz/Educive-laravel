@@ -36,21 +36,28 @@ Route::get('/add', function () {
     return view('post.add');
 });
 
-// Posts
+// Posts operations for users
+Route::get('/allposts','PostController@allposts');
 
-Route::post('/user/{user}/addnews','PostController@store');
+Route::post('/user/addpost','PostController@store');
 
 Route::get('/post/{post}','PostController@edit');
 Route::post('/post/{post}','PostController@update');
-
 Route::get('/post/delete/{post}/','PostController@deleteCheck');
 Route::post('/post/delete/{post}','PostController@delete');
-Route::get('/post/unpublish/{post}/','PostController@unpublishCheck');
+
 Route::post('/post/unpublish/{post}','PostController@unpublish');
+Route::post('/post/publish/{post}','PostController@publish');
 
-Route::get('/user/{user}','PostController@allposts');
+// Moderator
+Route::get('/waitlist','PostController@waitlist');
+Route::post('/post/approve/{post}','PostController@approve');
 
-// End of posts
+// Post operations for moderator
+Route::get('/post/editByModerator/{post}','PostController@editByModerator');
+Route::post('/post/editByModerator/{post}','PostController@updateByModerator');
+Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');
+Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
 
 Route::auth();
 
