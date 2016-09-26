@@ -21,12 +21,14 @@
             	<i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <a class="navbar-brand" href="#">Educive.com</a>
-            <form style="float:left" class="col-xs-5">
-               <div class="form-group collapsed-form">
-                  	<input type="text" class="form-control" placeholder="Search">
-                     <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
-               </div>
-            </form>
+						<form class="col-xs-5 show-in-collapse">
+	 			    <div class="input-group">
+	 			      <input type="text" class="form-control" placeholder="Search for...">
+	 			      <span class="input-group-btn">
+	 			        <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+	 			      </span>
+	 			    </div><!-- /input-group -->
+	 				</form>
          </div>
 
          <!-- Collect the nav links, forms, and other content for toggling -->
@@ -66,21 +68,42 @@
 					</li>
             	<li><a href="#">Contact Us<span class="sr-only"</span></a></li>
          	</ul>
-         	<form class="navbar-form navbar-right full-width-form">
-            	<div class="form-group">
-               	<input type="text" class="form-control" placeholder="Search">
-               	<button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
-            	</div>
-         	</form>
+
 				@if (Auth::guest())
          	<ul class="nav navbar-nav navbar-right">
          		<li><a id="signUp" href="/register">Sign up</a></li>
          		<li><a href="/login">Log in</a></li>
          	</ul>
 				@else
-					<p style='color:white'>Hi, {{ Auth::user() -> name }} </p>
-					<a href='/logout'>Logout</a>
+				<ul class="nav navbar-nav navbar-right hide-in-collapse">
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Settings</a></li>
+							<li><a href="#">Following</a></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right show-in-collapse">
+					<li role="separator" class="divider"></li>
+					<li class="show-in-collapse" ><a href="#">Settings</a></li>
+					<li class="show-in-collapse" ><a href="#">Following</a></li>
+					<li class="show-in-collapse" ><a href="/logout">Logout</a></li>
+				</ul>
 				@endif
+
+
+				 <form class="navbar-form navbar-right hide-in-collapse">
+			    <div class="input-group">
+			      <input type="text" class="form-control" placeholder="Search for...">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			      </span>
+			    </div><!-- /input-group -->
+				</form>
+
          </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
    </nav>
