@@ -23,10 +23,11 @@ Route::get('/', function () {
 Route::get('/category', function () {
     return view('category');
 });
-
-Route::get('/news', function () {
-    return view('news');
+Route::get('/tags', function () {
+    return view('tags');
 });
+
+Route::get('/news/{post}', 'NewsController@show');
 
 Route::get('/contact', function () {
     return view('contact');

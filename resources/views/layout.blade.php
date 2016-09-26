@@ -3,9 +3,9 @@
 <head>
 	<title>@yield('title')</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendors/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendors/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 </head>
@@ -105,9 +105,9 @@
 </section><!--  Nigar -->
 </div>
 
-<script type="text/javascript" src="assets/vendors/jquery/jquery-3.1.0.js"></script>
-<script type="text/javascript" src="assets/vendors/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript" src="/assets/vendors/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/assets/vendors/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
 
 </body>
 </html>
