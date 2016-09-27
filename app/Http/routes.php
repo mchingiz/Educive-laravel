@@ -81,3 +81,8 @@ Route::get('/following/{id}', function ($id) {
     $user=User::find($id);
     return $user->following;
 });
+
+//Vugar
+Route::get('/companyedit/{company}','CompanyController@edit');
+
+Route::post('/companyedit/{id}','CompanyController@update');
