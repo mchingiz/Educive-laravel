@@ -110,8 +110,7 @@
 </section><!--  Nigar -->
 
 @yield('content')
-
-<section id="footer">
+<section id="footer" class="@yield('footer-position')">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-xs-12">

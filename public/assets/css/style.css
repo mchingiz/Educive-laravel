@@ -344,6 +344,9 @@
   #pages .post {
     position: relative; }
 
+html, body {
+  height: 100%; }
+
 #header {
   padding-bottom: 60px; }
   #header .navbar {
@@ -409,6 +412,11 @@
     #footer div i:hover {
       background: #F44336;
       color: #191B28; }
+
+.footer-position {
+  position: absolute;
+  width: 100%;
+  bottom: 0; }
 
 @media (min-width: 768px) {
   #footer span {
@@ -512,5 +520,54 @@
   border: none; }
   #contact .btn1:hover {
     background-color: #073956; }
+
+.register .sectionHeader {
+  padding-top: 30px;
+  display: block;
+  position: relative;
+  overflow: hidden; }
+  .register .sectionHeader h1 {
+    display: inline-block;
+    padding-right: 30px; }
+  .register .sectionHeader:after {
+    background-color: darkslategray;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 70%;
+    height: 1px;
+    width: 100%; }
+  .register .sectionHeader .rect {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: #93b228;
+    height: 30px;
+    width: 30px;
+    transform: rotate(45deg);
+    border-radius: 10px; }
+.register .submit-button {
+  width: 105px;
+  height: 40px;
+  background-color: #93B228;
+  color: white;
+  transition: all 0.4s ease;
+  border: none; }
+  .register .submit-button:hover {
+    background-color: #191B28; }
+.register .user-type-button {
+  text-align: center;
+  padding: 35px 0px;
+  background-color: #191B28;
+  font-size: 2em;
+  color: white;
+  transition: background-color 1s ease; }
+  .register .user-type-button:hover {
+    background-color: #F44336; }
+.register #registeras {
+  background-color: #191B28;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */

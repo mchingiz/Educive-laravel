@@ -1,7 +1,6 @@
 //Navbar hover function
 
 function Navbar(){
-  console.log($(window).width())
     if($(window).width()<1200){
         $(".dropdown-toggle").attr("data-toggle","dropdown")
     }
@@ -49,7 +48,17 @@ jQuery(document).ready(function($) {
 		$("#special .col-md-2").css("opacity","1");
 	})
 
-    Navbar();
+
+    // register
+    form=$(".form").hide();
+    $(".user-type-button").on("click",function(){
+      $(".usertype").remove();
+      $(".form").show();
+      id=$(this).attr("id")
+      //sending to input
+      $("#type").val(id)
+    })
+
 });
 
 //Navbar
