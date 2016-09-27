@@ -375,18 +375,29 @@
         border-left: 5px solid transparent; }
         #header .navbar ul li ul li:hover {
           border-color: #F44336; }
-    #header .navbar ul .divider {
-      height: 1px;
-      background-color: #F44336;
-      opacity: 0.15; }
-    #header .navbar .input-group {
-      margin-top: 3px; }
-      #header .navbar .input-group input, #header .navbar .input-group button {
-        border-radius: 1px; }
-      #header .navbar .input-group i {
-        color: #F44336 !important; }
-    #header .navbar .show-in-collapse .input-group {
-      margin-top: 10px; }
+    #header .navbar .form-group .form-control {
+      display: inline-block !important;
+      border: none !important; }
+    #header .navbar .form-group input {
+      margin-right: -4px;
+      border-radius: 0; }
+    #header .navbar .form-group button {
+      border-radius: 0;
+      border-color: transparent;
+      margin-left: -43px; }
+      #header .navbar .form-group button i {
+        color: #F44336; }
+    #header .navbar .collapsed-form {
+      margin-top: 12px; }
+      #header .navbar .collapsed-form .form-control {
+        width: 70%;
+        padding: 3px 3px;
+        height: auto;
+        border: none; }
+      #header .navbar .collapsed-form button {
+        margin-top: -2px;
+        padding: 3px;
+        border: none; }
 
 #footer {
   margin-top: 30px;
@@ -415,21 +426,9 @@
     float: left; }
   #footer i {
     float: right; } }
-@media (min-width: 768px) {
-  #footer span {
-    float: left; }
-
-  #footer i {
-    float: right; } }
 @media (max-width: 768px) {
   #footer div {
     text-align: center; } }
-@media (min-width: 1200px) {
-  .dropdown:hover .dropdown-menu {
-    display: block !important; }
-
-  .show-in-collapse {
-    display: none !important; } }
 @media (max-width: 1200px) {
   .navbar-header {
     float: none; }
@@ -463,10 +462,7 @@
     padding-bottom: 10px; }
 
   .collapse.in {
-    display: block !important; }
-
-  .hide-in-collapse {
-    display: none !important; } }
+    display: block !important; } }
 #author h1 {
   font-size: 48px;
   font-weight: 600;
