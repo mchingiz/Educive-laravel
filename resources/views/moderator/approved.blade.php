@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Approval pending posts
+Already Approved Posts
 @stop
 
 @section('head')

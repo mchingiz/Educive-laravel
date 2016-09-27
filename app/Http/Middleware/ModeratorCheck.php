@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdministrationCheck
+class ModeratorCheck
 {
 	/**
 	* Handle an incoming request.
@@ -16,7 +16,7 @@ class AdministrationCheck
 	public function handle($request, Closure $next){
 		$user = $request->user();
 
-		if( $user && $user->type == 'admin'){
+		if( $user && $user->type == 'moderator'){
 			return $next($request);
 		}
 

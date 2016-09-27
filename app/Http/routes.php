@@ -55,6 +55,9 @@ Route::get('/contact', function () {
 	Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');
 	Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
 
+// Admin
+	
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

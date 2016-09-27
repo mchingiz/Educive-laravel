@@ -19,6 +19,7 @@ class PostController extends Controller
 	public function __construct(){
 		$this->middleware('auth');
 		$this->middleware('admin', ['only' => ['allposts','editByModerator','updateByModerator','waitlist','deleteCheckByModerator','deleteByModerator','approve']]);
+		$this->middleware('moderator', ['only' => ['allposts','editByModerator','updateByModerator','waitlist','deleteCheckByModerator','deleteByModerator','approve']]);
 		$this->middleware('company', ['only' => ['userPosts','add','store','edit','update','deleteCheck','delete','publish','unpublish']]);
 		$this->user = Auth::user();
 	}
