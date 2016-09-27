@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<section id="register">
+<section class="register">
 <div class="container">
 <div class="row usertype">
   <div style="height:150px"></div>
