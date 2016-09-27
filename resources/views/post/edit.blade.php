@@ -33,7 +33,7 @@ Edit news
 		</div>
 		<div class="input-group">
 			<input type="submit" name="sumit" class="btn btn-success">
-			<a href='/user/{{ Auth::user()->id }}' class='btn btn-primary'>Go back to list</a>
+			<a href='/posts' class='btn btn-primary'>Go back to list</a>
 		</div>
 	</form>
 	@if( $errors )
