@@ -90,15 +90,18 @@
 			</div>
 			<div class="col-lg-9 col-md-9 section-single">
 				<h1 class="section-title caticon sbx"><i>T</i><span class="sidebar-trending"></span>Technology</h1>
-				<h1><b>iWatch Pre-Order</b></h1>
+				
+				
 
-				<img src="img/single-post-featured.jpg" alt="Post img">
+
+				<h1><b>{{$post->title}}</b></h1>
+				
+				<img src="/img/{{$post->image}}" alt="Post img">
 				<br>
 				<br>
-				<span class="fa fa-clock-o" aria-hidden="true"> 25 January, 2015</span>  <span class="fa fa-rss" aria-hidden="true"> John Doe</span></br>
+				<span class="fa fa-clock-o" aria-hidden="true">{{$post->deadline}}</span>  <span class="fa fa-rss" aria-hidden="true"> John Doe</span></br>
 				<br>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br>
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<p>{{$post->body}}</p>
 
 
 				<div class="col-md-9  section-tags">
@@ -108,11 +111,9 @@
 					</div>
 
 					<ul class="post-tags">
-						<li><a href="#">Videos</a></li>
-						<li><a href="#">Sport</a></li>
-						<li><a href="#">Gastro</a></li>
-						<li><a href="#">Tech</a></li>
-						<li><a href="#">Urbanism</a></li>
+						@foreach( $teqler as $teq)
+							<li><a href="#">{{ $teq->name }}</a></li>
+						@endforeach
 					</ul>
 
 
@@ -129,7 +130,7 @@
 					<div class="row">
 						<div class="col-md-4 col-sm-4">
 							<div class="entry-header">
-								<img class="img-responsive" src="img/middle-post-thumb1.jpg" alt="Post img">
+								<img class="img-responsive" src="/img/middle-post-thumb1.jpg" alt="Post img">
 							</div>
 						</div>
 						<div class="col-md-8 col-sm-8">
@@ -195,7 +196,7 @@
 
 						<li class="media col-md-12">
 							<div class="media-left">
-							  <a href="#"><img class="media-object" src="img/xs-post-thumb.jpg" alt="Post img"></a>
+							  <a href="#"><img class="media-object" src="/img/xs-post-thumb.jpg" alt="Post img"></a>
 							</div>
 							<div class="media-body">
 							  <h4 class="media-heading"><a href="#">Startup released a chip for little pets</a></h4>
@@ -205,7 +206,7 @@
 
 						<li class="media col-md-12">
 							<div class="media-left">
-							  <a href="#"><img class="media-object" src="img/xs-post-thumb.jpg" alt="Post img"></a>
+							  <a href="#"><img class="media-object" src="/img/xs-post-thumb.jpg" alt="Post img"></a>
 							</div>
 							<div class="media-body">
 							  <h4 class="media-heading"><a href="#">New Canon lens available</a></h4>
@@ -215,7 +216,7 @@
 
 						<li class="media col-md-12">
 							<div class="media-left">
-							  <a href="#"><img class="media-object" src="img/xs-post-thumb.jpg" alt="Post img"></a>
+							  <a href="#"><img class="media-object" src="/img/xs-post-thumb.jpg" alt="Post img"></a>
 							</div>
 							<div class="media-body">
 							  <h4 class="media-heading"><a href="#">Pioneer makes you better DJs</a></h4>
@@ -225,7 +226,7 @@
 
 						<li class="media col-md-12">
 							<div class="media-left">
-							  <a href="#"><img class="media-object" src="img/xs-post-thumb.jpg" alt="Post img"></a>
+							  <a href="#"><img class="media-object" src="/img/xs-post-thumb.jpg" alt="Post img"></a>
 							</div>
 							<div class="media-body">
 							  <h4 class="media-heading"><a href="#">Minimal organized special gadgets</a></h4>
