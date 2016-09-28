@@ -44,10 +44,11 @@ Route::get('/contact', function () {
 	Route::post('/post/publish/{post}','PostController@publish');
 
 // Moderator
-	Route::get('/waitlist','PostController@waitlist');
+	Route::get('/waitlist','AdminPanelController@waitlist');
 	Route::post('/post/approve/{post}','PostController@approve');
-	Route::get('/approved','PostController@approved');
+	Route::get('/approved','AdminPanelController@approved');
 	Route::post('/post/refuse/{post}','PostController@refuse');
+	Route::get('/userlist','AdminPanelController@userlist');
 
 		// Post operations for moderator
 	Route::get('/post/editByModerator/{post}','PostController@editByModerator');
@@ -56,7 +57,12 @@ Route::get('/contact', function () {
 	Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
 
 // Admin
-	
+	Route::get('/dashboard','AdminPanelController@dashboard');
+	Route::get('/makeUser/{user}/','UserController@makeUser');
+	Route::get('/makeModerator/{user}/','UserController@makeModerator');
+	Route::get('/makeAdmin/{user}/','UserController@makeAdmin');
+	Route::get('/deleteUser/{user}/','UserController@delete');
+
 
 Route::auth();
 

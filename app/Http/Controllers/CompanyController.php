@@ -10,7 +10,7 @@ use App\Company;
 
 class CompanyController extends Controller
 {
-    
+
     public function edit(Company $company)
     {
         return view('companyedit',compact('company'));
@@ -18,7 +18,7 @@ class CompanyController extends Controller
 
     public function update(Request $request, $id)
     {
- 
+
     $company = Company::find($id);
 
     $this->validate($request, [
@@ -29,8 +29,8 @@ class CompanyController extends Controller
     $input = $request->all();
 
         if($request->file('logo')){
-            
-            
+
+
 
             $logo = $request -> file('logo');
 
@@ -40,12 +40,12 @@ class CompanyController extends Controller
             $logo->move($targetLocation, $targetName);
 
             $url = '/logo/'.$targetName;
-            
+
             $a = $company->update([
                 'logo' => $url
             ]);
         }
     return redirect()->back();
     }
-    
+
 }

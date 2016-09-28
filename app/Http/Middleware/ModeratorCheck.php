@@ -20,6 +20,6 @@ class ModeratorCheck
 			return $next($request);
 		}
 
-		return 'You are not an admin';
+		return "You are not a moderator";
 	}
 }

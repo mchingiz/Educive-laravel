@@ -18,10 +18,15 @@ class PostController extends Controller
 
 	public function __construct(){
 		$this->middleware('auth');
-		$this->middleware('admin', ['only' => ['allposts','editByModerator','updateByModerator','waitlist','deleteCheckByModerator','deleteByModerator','approve']]);
-		$this->middleware('moderator', ['only' => ['allposts','editByModerator','updateByModerator','waitlist','deleteCheckByModerator','deleteByModerator','approve']]);
-		$this->middleware('company', ['only' => ['userPosts','add','store','edit','update','deleteCheck','delete','publish','unpublish']]);
 		$this->user = Auth::user();
+		if($this->user->type != 'admin' ){
+			$this->middleware('moderator', ['only' => ['allposts','editByModerator','updateByModerator','deleteCheckByModerator','deleteByModerator','approve']]);
+		}
+		if($this->user->type != 'moderator' ){
+			$this->middleware('admin', ['only' => ['allposts','editByModerator','updateByModerator','deleteCheckByModerator','deleteByModerator','approve']]);
+		}
+		$this->middleware('company', ['only' => ['userPosts','add','store','edit','update','deleteCheck','delete','publish','unpublish']]);
+
 	}
 
 	// Methods for users
@@ -140,24 +145,6 @@ class PostController extends Controller
 
 	// Methods for moderators
 
-	public function waitlist(){
-		$posts = Post::where([
-				['approved', '=', '0'],
-				['published', '=', '1'],
-			])->get();
-		$isEmpty=$posts->toArray();
-		return view('moderator.waitlist',compact('posts','isEmpty'));
-	}
-
-	public function approved(){
-		$posts = Post::where([
-				['published', '=', '1'],
-				['approved', '=', '1'],
-			])->get();
-		$isEmpty=$posts->toArray();
-		return view('moderator.approved',compact('posts','isEmpty'));
-	}
-
 	public function approve(Post $post){
 		$post -> approved = 1;
 		$post -> save();
@@ -171,7 +158,7 @@ class PostController extends Controller
 	}
 
 	public function editByModerator(Post $post){
-		return view('moderator.edit',compact('post'));
+		return view('administration.edit',compact('post'));
 	}
 
 	public function updateByModerator(Request $request, Post $post){
@@ -209,7 +196,7 @@ class PostController extends Controller
 	}
 
 	public function deleteCheckByModerator(){
-		return view('moderator.delete');}
+		return view('administration.delete');}
 
 	public function deleteByModerator(Post $post){
 		$post->delete();
