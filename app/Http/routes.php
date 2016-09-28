@@ -15,6 +15,31 @@ use App\User;
 use App\Tag;
 use App\Category;
 use App\Company;
+use App\Menu;
+use App\Submenu;
+
+
+Route::get('menu/{id}/submenus', function ($id) {
+    $menu=Menu::find($id);
+    return $menu->submenus;
+});
+Route::get('submenu/{id}/menu', function ($id) {
+    $submenu=Submenu::find($id);
+    return $submenu->menu;
+});
+Route::get('category/{id}/submenu', function ($id) {
+    $cat=Category::find($id);
+    return $cat->submenu;
+});
+Route::get('submenu/{id}/category', function ($id) {
+  $submenu=Submenu::find($id);
+  return $submenu->category;
+});
+Route::get('category/{id}/posts', function ($id) {
+  $Category=Category::find($id);
+  return $Category->posts;
+});
+
 
 Route::get('/', function () {
     return view('index');

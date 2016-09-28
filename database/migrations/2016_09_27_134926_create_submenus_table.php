@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateSubmenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-          $table->increments('id');
-          $table->integer('submenu_id');
-          $table->string('name');
-          $table->string('link');
-          $table->timestamps();
+        Schema::create('submenus', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('menu_id');
+            $table->string('name');
+            $table->string('link');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('submenus');
     }
 }
