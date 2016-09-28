@@ -10,25 +10,36 @@ use Auth;
 use App\Http\Requests;
 use App\Post;
 use App\User;
+use App\Company;
 
 class PostController extends Controller
 {
 	private $user;
 
 	public function __construct(){
+		$this->middleware('auth');
+		$this->middleware('admin', ['only' => ['allposts','editByModerator','updateByModerator','waitlist','deleteCheckByModerator','deleteByModerator','approve']]);
+		$this->middleware('moderator', ['only' => ['allposts','editByModerator','updateByModerator','waitlist','deleteCheckByModerator','deleteByModerator','approve']]);
+		$this->middleware('company', ['only' => ['userPosts','add','store','edit','update','deleteCheck','delete','publish','unpublish']]);
 		$this->user = Auth::user();
 	}
 
-	public function allposts(){
+	// Methods for users
+
+	public function userPosts(){
 		$posts = $this->user->posts->all();
 		return view('post.posts', compact('posts'));
+	}
+
+	public function add(){
+		return view('post.add');
 	}
 
 	public function store(Request $request){
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:5|',
-			'image' => 'required',
+			'image' => 'required|mimes:jpeg,bmp,png',
 			'deadline' => 'required'
 		]);
 
@@ -50,20 +61,29 @@ class PostController extends Controller
 			'image' => $url
 			]);
 
-		return redirect('/allposts');
+		return redirect('/posts');
 	}
 
 	public function edit(Post $post){
-		return view('post.edit',compact('post'));
+		if($this->user->id == $post->user->id){
+			return view('post.edit',compact('post'));
+		}else{
+			return "You don't have permission";
+		}
 	}
 
 	public function update(Request $request, Post $post){
-		$post->update([
-			'title' => $request->title,
-			'body' => $request->body,
-			'deadline' => $request->deadline
+		$this->validate($request,[
+			'title' => 'required|min:10|max:150',
+			'body' => 'required|min:5|',
+			'image' => 'required|mimes:jpeg,bmp,png',
+			'deadline' => 'required'
 		]);
-
+		$post->update([
+					'title' => $request->title,
+					'body' => $request->body,
+					'deadline' => $request->deadline
+				]);
 		if( $request->file('image') ){
 			$newPost = new Post;
 
@@ -84,11 +104,84 @@ class PostController extends Controller
 		return back();
 	}
 
+	public function deleteCheck(Post $post){
+		if($this->user->id == $post->user->id){
+			return view('post.delete');
+		}else{
+			return "You don't have permission";
+		}
+	}
+
+
+	public function delete(Post $post){
+		$post->delete();
+		return redirect('/posts/');
+	}
+
+	public function unpublish(Post $post){
+		if($this->user->id == $post->user->id){
+			$post -> published = 0;
+			$post -> save();
+			return back();
+		}else{
+			return "You don't have permission";
+		}
+	}
+
+	public function publish(Post $post){
+		if($this->user->id == $post->user->id){
+			$post -> published = 1;
+			$post -> save();
+			return back();
+		}else{
+			return "You don't have permission";
+		}
+	}
+
+	// Methods for moderators
+
+	public function waitlist(){
+		$posts = Post::where([
+				['approved', '=', '0'],
+				['published', '=', '1'],
+			])->get();
+		$isEmpty=$posts->toArray();
+		return view('moderator.waitlist',compact('posts','isEmpty'));
+	}
+
+	public function approved(){
+		$posts = Post::where([
+				['published', '=', '1'],
+				['approved', '=', '1'],
+			])->get();
+		$isEmpty=$posts->toArray();
+		return view('moderator.approved',compact('posts','isEmpty'));
+	}
+
+	public function approve(Post $post){
+		$post -> approved = 1;
+		$post -> save();
+		return back();
+	}
+
+	public function refuse(Post $post){
+		$post -> approved = 0;
+		$post -> save();
+		return back();
+	}
+
 	public function editByModerator(Post $post){
 		return view('moderator.edit',compact('post'));
 	}
 
 	public function updateByModerator(Request $request, Post $post){
+		$this->validate($request,[
+			'title' => 'required|min:10|max:150',
+			'body' => 'required|min:5|',
+			'image' => 'required|mimes:jpeg,bmp,png',
+			'deadline' => 'required'
+		]);
+
 		$post->update([
 			'title' => $request->title,
 			'body' => $request->body,
@@ -115,16 +208,6 @@ class PostController extends Controller
 		return redirect('/waitlist');
 	}
 
-
-	public function deleteCheck(){
-		return view('post.delete');}
-
-	public function delete(Post $post){
-		$post->delete();
-		return redirect('/allposts/');
-	}
-
-
 	public function deleteCheckByModerator(){
 		return view('moderator.delete');}
 
@@ -133,30 +216,4 @@ class PostController extends Controller
 		return redirect('/waitlist/');
 	}
 
-	public function unpublish(Post $post){
-		$post -> published = 0;
-		$post -> save();
-		return back();
-	}
-
-	public function publish(Post $post){
-		$post -> published = 1;
-		$post -> save();
-		return back();
-	}
-
-	public function waitlist(){
-		$posts = Post::where([
-				['approved', '=', '0'],
-				['published', '=', '1'],
-			])->get();
-		$isEmpty=$posts->toArray();
-		return view('moderator.waitlist',compact('posts','isEmpty'));
-	}
-
-	public function approve(Post $post){
-		$post -> approved = 1;
-		$post -> save();
-		return back();
-	}
-}
+}//End of class

@@ -43,47 +43,45 @@ Route::get('category/{id}/posts', function ($id) {
 
 Route::get('/', function () {
     return view('index');
-});
-
+ });
 Route::get('/category', function () {
     return view('category');
-});
+ });
 Route::get('/tags', function () {
     return view('tags');
-});
-
-Route::get('/news/{post}', 'NewsController@show');
-
+ });
 Route::get('/contact', function () {
     return view('contact');
-});
-
-Route::get('/add', function () {
-    return view('post.add');
-});
+ });
 
 // Posts operations for users
-Route::get('/allposts','PostController@allposts');
+	Route::get('/add','PostController@add');
+	Route::get('/posts','PostController@userPosts');
 
-Route::post('/user/addpost','PostController@store');
+	Route::post('/user/addpost','PostController@store');
 
-Route::get('/post/{post}','PostController@edit');
-Route::post('/post/{post}','PostController@update');
-Route::get('/post/delete/{post}/','PostController@deleteCheck');
-Route::post('/post/delete/{post}','PostController@delete');
+	Route::get('/post/{post}','PostController@edit');
+	Route::post('/post/{post}','PostController@update');
+	Route::get('/post/delete/{post}/','PostController@deleteCheck');
+	Route::post('/post/delete/{post}','PostController@delete');
 
-Route::post('/post/unpublish/{post}','PostController@unpublish');
-Route::post('/post/publish/{post}','PostController@publish');
+	Route::post('/post/unpublish/{post}','PostController@unpublish');
+	Route::post('/post/publish/{post}','PostController@publish');
 
 // Moderator
-Route::get('/waitlist','PostController@waitlist');
-Route::post('/post/approve/{post}','PostController@approve');
+	Route::get('/waitlist','PostController@waitlist');
+	Route::post('/post/approve/{post}','PostController@approve');
+	Route::get('/approved','PostController@approved');
+	Route::post('/post/refuse/{post}','PostController@refuse');
 
-// Post operations for moderator
-Route::get('/post/editByModerator/{post}','PostController@editByModerator');
-Route::post('/post/editByModerator/{post}','PostController@updateByModerator');
-Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');
-Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
+		// Post operations for moderator
+	Route::get('/post/editByModerator/{post}','PostController@editByModerator');
+	Route::post('/post/editByModerator/{post}','PostController@updateByModerator');
+	Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');
+	Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
+
+// Admin
+	
 
 Route::auth();
 
