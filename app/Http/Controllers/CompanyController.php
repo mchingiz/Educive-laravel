@@ -23,10 +23,28 @@ class CompanyController extends Controller
 
     $this->validate($request, [
         'name' => 'required',
-        'definition' => 'required'
+        'definition' => 'required',
+        'logo'   =>  'mimes:jpeg,jpg,png',
+        'facebook'   => 'active_url',
+        'instagram'   => 'active_url',
+        'linkedin'   => 'active_url',
+        'website'   => 'active_url'
     ]);
+     $company->update([
+        'name' => $request->name,
+        'definition' => $request->definition,
+        'address' => $request->adress,
+        'fax' => $request->fax,
+        'phone' => $request->phone,
+        'phone1' => $request->phone1,
+        'facebook' => $request->facebook,
+        'instagram' => $request->instagram,
+        'linkedin' => $request->linkedin,
+        'website' => $request->website,
+        'email' => $request->email,
+     ]);
 
-    $input = $request->all();
+    // $input = $request->all();
 
         if($request->file('logo')){
 
