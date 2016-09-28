@@ -57,7 +57,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 
-
+Route::get('/math','CategoryController@math');
 
 
 
