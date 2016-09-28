@@ -73,7 +73,7 @@ Route::get('/menu', 'MenuController@show');
 Route::get('/deletemenu/{id}', 'MenuController@delete');
 
 
-
+Route::get('/math','CategoryController@math');
 
 
 
