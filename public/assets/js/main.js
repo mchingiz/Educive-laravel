@@ -59,6 +59,18 @@ jQuery(document).ready(function($) {
       $("#type").val(id)
     })
 
+  //Menu
+
+
+  $("#addmenuform").toggle()
+  $("#addmenubutton").on('click',function(){
+    $("#addmenuform").toggle()
+  })
+  $(".addsubmenuform").toggle()
+  $(".addsubmenubutton").on('click',function(){
+  $(this).parent().parent().parent().find(".addsubmenuform").toggle();
+  })
+
 });
 
 //Navbar

@@ -15,6 +15,11 @@ use App\User;
 use App\Tag;
 use App\Category;
 use App\Company;
+use App\Menu;
+use App\Submenu;
+
+
+
 
 Route::get('/', function () {
     return view('index');
@@ -55,6 +60,16 @@ Route::get('/contact', function () {
 	Route::post('/post/editByModerator/{post}','PostController@updateByModerator');
 	Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');
 	Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
+//Menu
+Route::get('/menu', 'MenuController@show');
+Route::post('/menu', 'MenuController@create');
+Route::post('{menu}/submenu', 'SubmenuController@create');
+Route::get('/editmenu/{id}', 'MenuController@edit');
+Route::get('/editsubmenu/{submenu}', 'SubmenuController@edit');
+Route::post('/editmenu/{id}', 'MenuController@update');
+Route::post('/editsubmenu/{submenu}', 'SubmenuController@update');
+Route::get('/deletemenu/{id}', 'MenuController@delete');
+Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 
 // Admin
 	Route::get('/dashboard','AdminPanelController@dashboard');
@@ -68,9 +83,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/menu', 'MenuController@show');
 
-Route::get('/deletemenu/{id}', 'MenuController@delete');
+
 
 
 Route::get('/math','CategoryController@math');
