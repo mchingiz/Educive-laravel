@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Menu;
 
 class HomeController extends Controller
 {
@@ -26,5 +27,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    
+
+    public function mainpage()
+    { $menus=Menu::all();
+
+        return view('index',compact('menus'));
+    }
+
+
+
 }

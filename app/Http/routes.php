@@ -21,9 +21,7 @@ use App\Submenu;
 
 
 
-Route::get('/', function () {
-    return view('index');
- });
+Route::get('/', 'HomeController@mainpage');
 Route::get('/category', function () {
     return view('category');
  });
@@ -81,7 +79,7 @@ Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+ Route::get('/home', 'HomeController@index');
 
 
 
