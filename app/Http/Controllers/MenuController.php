@@ -19,9 +19,8 @@ class MenuController extends Controller
 			])->get()->count();
 
 			$this->middleware('admin');
-  public function __construct(){
-		$this->middleware('admin');
-	}
+		}
+		
     public function show(){
         $data=Menu::all();
 

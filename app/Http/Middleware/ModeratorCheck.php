@@ -20,6 +20,7 @@ class ModeratorCheck
 			return $next($request);
 		}
 
-		return "You are not a moderator";
+		$privilegeError = 'You are not a <strong>moderator</strong>';
+		return view('errors.privilege',compact('privilegeError'));
 	}
 }

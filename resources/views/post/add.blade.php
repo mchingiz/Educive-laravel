@@ -33,7 +33,7 @@ Add news
 		</div>
 		<div class="input-group">
 			<label for='category'>Choose category</label>
-			<select class="form-control" id="category">
+			<select class="form-control" id="category" name="category">
 				@foreach( $menu as $menuItem )
 				<optgroup label="{{ $menuItem->name }}">
 					@foreach( $submenu as $submenuItem)
@@ -45,24 +45,21 @@ Add news
 				@endforeach
 			</select>
 		</div>
-		<div class="input-group">
-			@foreach( $tags as $tag )
-				<label class="checkbox-inline">{{ $tag->name }}</label>
-				<input type="checkbox" value="s">
-			@endforeach
-		</div>
 
-			<!-- <script type="text/javascript">
-			$("select.js-example-basic-multiple").select2();
+		<div class="input-group">
+			<label for='selectTag' style='display:block'>Choose tags</label>
+			<select class="js-example-basic-multiple" multiple="multiple" name="tag" id='selectTag' style="width:235px">
+				@foreach( $tags as $tag )
+					<option value="{{$tag->id}}">{{ $tag->name }}</option>
+				@endforeach
+			</select>
+
+			<script type="text/javascript">
+				$("select.js-example-basic-multiple").select2();
 			</script>
-
-			<select class="js-example-basic-multiple" multiple="multiple">
-			  <option value="AL">Alabama</option>
-			  <option value="WY">Wyoming</option>
-			</select> -->
-
+		</div>
 		<div class="input-group">
-			<input type="submit" name="sumit" class="btn btn-success">
+			<input type="submit" name="sumit" class="btn btn-success" style="margin-top:20px">
 		</div>
 	</form>
 	@if( $errors )

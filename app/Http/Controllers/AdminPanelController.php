@@ -28,6 +28,8 @@ class AdminPanelController extends Controller
 				['approved', '=', '0'],
 				['published', '=', '1'],
 			])->get()->count();
+
+		view()->share('notApproved', $this->notApproved);
 	}
 
    public function dashboard(){
@@ -44,20 +46,8 @@ class AdminPanelController extends Controller
 			])->get()->count();
 
 
-		$notApproved = $this->notApproved;
-   	return  view('administration.dashboard',compact('postCount','notApproved','registrationCount','userCount','companyCount','viewCount'));
+   	return  view('administration.dashboard',compact('postCount','registrationCount','userCount','companyCount','viewCount'));
    }
-
-   // public function sendVariables($view,$variables){
-	// 	$postCount = $this->postCount;
-	// 	$notApproved = $this->notApproved;
-	// 	$registrationCount = $this->registrationCount;
-	// 	$userCount = $this->userCount;
-	// 	$companyCount = $this->companyCount;
-   // 	return  view($view,compact($variables,'postCount','notApproved','registrationCount','userCount','companyCount'));
-   // }
-
-
 
 	public function waitlist(){
 		$posts = Post::where([
@@ -66,8 +56,7 @@ class AdminPanelController extends Controller
 			])->get();
 		$isEmpty=$posts->toArray();
 
-		$notApproved = $this->notApproved;
-		return view('administration.waitlist',compact('posts','isEmpty','notApproved'));
+		return view('administration.waitlist',compact('posts','isEmpty'));
 	}
 
 	public function approved(){
@@ -77,14 +66,16 @@ class AdminPanelController extends Controller
 			])->get();
 		$isEmpty=$posts->toArray();
 
-		$notApproved = $this->notApproved;
-		return view('administration.approved',compact('posts','isEmpty','notApproved'));
+		return view('administration.approved',compact('posts','isEmpty'));
 	}
 
 	public function userlist(){
 		$users = User::all();
 
-		$notApproved = $this->notApproved;
-		return view('administration.userlist',compact('users','notApproved'));
+		return view('administration.userlist',compact('users'));
+	}
+
+	public function stats(){
+		return view('administration.stats',compact(''));
 	}
 }

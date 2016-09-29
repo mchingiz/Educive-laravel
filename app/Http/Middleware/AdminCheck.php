@@ -20,6 +20,7 @@ class AdminCheck
 			return $next($request);
 		}
 
-		return 'You are not an admin';
+		$privilegeError = 'You are not an <strong>admin</strong>';
+		return view('errors.privilege',compact('privilegeError'));
 	}
 }

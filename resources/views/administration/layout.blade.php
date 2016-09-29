@@ -128,6 +128,12 @@
 				 <span>Menu</span>
           </a>
         </li>
+		  <li>
+          <a href="/stats">
+				 <i class="fa fa-bar-chart" aria-hidden="true"></i>
+				 <span>Stats</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

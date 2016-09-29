@@ -49,8 +49,10 @@ class PostController extends Controller
 	public function store(Request $request){
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
-			'body' => 'required|min:5|',
-			'image' => 'required|mimes:jpeg,bmp,png|max:2000'
+			'body' => 'required|min:5',
+			'image' => 'required|mimes:jpeg,bmp,png|max:2000',
+			'image' => 'required|mimes:jpeg,bmp,png|max:2000',
+			'category' => 'required'
 		]);
 
 		$newPost = new Post;
@@ -68,7 +70,8 @@ class PostController extends Controller
 			'title' => $request->title,
 			'body' => $request->body,
 			'deadline' => $request->deadline,
-			'image' => $url
+			'image' => $url,
+			'category' => $request->category
 			]);
 
 		return redirect('/posts');
@@ -85,13 +88,15 @@ class PostController extends Controller
 	public function update(Request $request, Post $post){
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
-			'body' => 'required|min:5|',
-			'image' => 'mimes:jpeg,bmp,png|max:2000'
+			'body' => 'required|min:5',
+			'image' => 'mimes:jpeg,bmp,png|max:2000',
+			'category' => 'required'
 		]);
 		$post->update([
 					'title' => $request->title,
 					'body' => $request->body,
-					'deadline' => $request->deadline
+					'deadline' => $request->deadline,
+					'category' => $request->category
 				]);
 		if( $request->file('image') ){
 			$newPost = new Post;
@@ -168,14 +173,16 @@ class PostController extends Controller
 	public function updateByModerator(Request $request, Post $post){
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
-			'body' => 'required|min:5|',
-			'image' => 'mimes:jpeg,bmp,png|max:2000'
+			'body' => 'required|min:5',
+			'image' => 'mimes:jpeg,bmp,png|max:2000',
+			'category' => 'required'
 		]);
 
 		$post->update([
 			'title' => $request->title,
 			'body' => $request->body,
-			'deadline' => $request->deadline
+			'deadline' => $request->deadline,
+			'category' => $request->category
 		]);
 
 		if( $request->file('image') ){

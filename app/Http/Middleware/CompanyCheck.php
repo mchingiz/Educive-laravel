@@ -21,6 +21,7 @@ class CompanyCheck
 			return $next($request);
 		}
 
-		return "You are not a company. You don't have permission to see this page";
+		$privilegeError = "You are not a <strong>company</strong>. You don't have permission to see this page";
+		return view('errors.privilege',compact('privilegeError'));
 	}
 }

@@ -28,7 +28,7 @@ Route::get('/category', function () {
 Route::get('/tags', function () {
     return view('tags');
  });
-Route::get('/contact', 'HomeController@contact');
+Route::get('/company/{company}', 'HomeController@company');
 
 // Posts operations for users
 	Route::get('/add','PostController@add');
@@ -69,6 +69,7 @@ Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 
 // Admin
 	Route::get('/dashboard','AdminPanelController@dashboard');
+	Route::get('/stats','AdminPanelController@stats');
 	Route::get('/makeUser/{user}/','UserController@makeUser');
 	Route::get('/makeModerator/{user}/','UserController@makeModerator');
 	Route::get('/makeAdmin/{user}/','UserController@makeAdmin');
