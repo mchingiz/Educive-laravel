@@ -55,7 +55,7 @@ Route::get('/contact', function () {
 	Route::post('/post/refuse/{post}','PostController@refuse');
 	Route::get('/userlist','AdminPanelController@userlist');
 
-		// Post operations for moderator
+	// Post operations for moderator
 	Route::get('/post/editByModerator/{post}','PostController@editByModerator');
 	Route::post('/post/editByModerator/{post}','PostController@updateByModerator');
 	Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');

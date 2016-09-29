@@ -6,11 +6,25 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Menu;
+use App\Post;
+
 class MenuController extends Controller
 {
+	protected $notApproved;
+
+	public function __construct(){
+		$this->notApproved = Post::where([
+				['approved', '=', '0'],
+				['published', '=', '1'],
+			])->get()->count();
+
+			$this->middleware('admin');
+	}
     public function show(){
         $data=Menu::all();
-        return view('menu.menu',compact('data'));
+
+		  $notApproved = $this->notApproved;
+        return view('menu.menu',compact('data','notApproved'));
     }
     public function edit($id){
         $data=Menu::find($id);

@@ -39,6 +39,9 @@ class UserController extends Controller
 	}
 
 	public function delete(User $user){
+		if($user->type == 'admin'){
+			return 'Can not be deleted';
+		}
 		$user->delete();
 		return back();
 	}

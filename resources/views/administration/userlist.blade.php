@@ -29,7 +29,7 @@ All users
 						Status
 					</td>
 					<td>
-						Change USer Type
+						Change User Type
 					</td>
 					<td>
 						Delete
@@ -85,9 +85,11 @@ All users
 						@endif
 
 					</td>
+					@unless($user->type == 'admin')
 					<td>
 						<a href="{{ url('/deleteUser/'.$user->id) }}" class='btn btn-danger'>Delete</a>
 					</td>
+					@endunless
 				</tr>
 			@endforeach
 			</tbody>

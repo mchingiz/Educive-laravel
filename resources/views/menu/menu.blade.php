@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('administration.layout')
 
 @section('title')
 Add Menu
@@ -9,9 +9,9 @@ Add Menu
 <script type="text/javascript" src="/assets/js/main.js"></script>
 <div class="container">
 @foreach($data as $menuitem)
-  <table class="table table-hover">
+  <table class="table">
     <thead>
-      <tr class="success">
+      <tr class="info">
         <th class="col-md-4">{{$menuitem->name}}</th>
         <th class="col-md-4"><a href="{{ url('editmenu/'.$menuitem->id )}}" class="btn btn-success pull-right" style="margin-right:5px">Edit</a></th>
         <th class="col-md-4"><a href="{{ url('deletemenu/'.$menuitem->id )}}" class="btn btn-danger pull-right" style="margin-right:5px">Delete</a></th>

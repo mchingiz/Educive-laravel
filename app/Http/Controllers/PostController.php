@@ -11,6 +11,9 @@ use App\Http\Requests;
 use App\Post;
 use App\User;
 use App\Company;
+use App\Menu;
+use App\Submenu;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -37,15 +40,17 @@ class PostController extends Controller
 	}
 
 	public function add(){
-		return view('post.add');
+		$menu = Menu::all();
+		$submenu = Submenu::all();
+		$tags = Tag::all();
+		return view('post.add',compact('menu','submenu','tags'));
 	}
 
 	public function store(Request $request){
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:5|',
-			'image' => 'required|mimes:jpeg,bmp,png',
-			'deadline' => 'required'
+			'image' => 'required|mimes:jpeg,bmp,png|max:2000'
 		]);
 
 		$newPost = new Post;
@@ -81,8 +86,7 @@ class PostController extends Controller
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:5|',
-			'image' => 'required|mimes:jpeg,bmp,png',
-			'deadline' => 'required'
+			'image' => 'mimes:jpeg,bmp,png|max:2000'
 		]);
 		$post->update([
 					'title' => $request->title,
@@ -165,8 +169,7 @@ class PostController extends Controller
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:5|',
-			'image' => 'required|mimes:jpeg,bmp,png',
-			'deadline' => 'required'
+			'image' => 'mimes:jpeg,bmp,png|max:2000'
 		]);
 
 		$post->update([

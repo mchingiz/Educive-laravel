@@ -31,6 +31,26 @@ Add news
 			<label for='file'>Upload an image</label>
 			<input type="file" id="file" name='image' class="custom-file-input">
 		</div>
+		<div class="input-group">
+			<label for='category'>Choose category</label>
+			<select class="form-control" id="category">
+				@foreach( $menu as $menuItem )
+				<optgroup label="{{ $menuItem->name }}">
+					@foreach( $submenu as $submenuItem)
+						@if( $submenuItem->menu_id == $menuItem->id)
+							<option>{{ $submenuItem->name }}</option>
+						@endif
+					@endforeach
+				</optgroup>
+				@endforeach
+			</select>
+		</div>
+		<div class="input-group">
+			@foreach( $tags as $tag )
+				<label class="checkbox-inline">{{ $tag->name }}</label>
+				<input type="checkbox" value="s">
+			@endforeach
+		</div>
 
 			<!-- <script type="text/javascript">
 			$("select.js-example-basic-multiple").select2();
