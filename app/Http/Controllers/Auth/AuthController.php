@@ -7,7 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use App\Menu;
 class AuthController extends Controller
 {
     /*
@@ -38,6 +38,8 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $menus=Menu::all();
+        view()->share('menus', $menus);
     }
 
     /**
@@ -66,6 +68,7 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'type' => $data['type'],
             'password' => bcrypt($data['password']),
         ]);
     }

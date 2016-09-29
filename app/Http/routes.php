@@ -15,56 +15,75 @@ use App\User;
 use App\Tag;
 use App\Category;
 use App\Company;
+use App\Menu;
+use App\Submenu;
 
-Route::get('/', function () {
-    return view('index');
-});
 
+
+
+Route::get('/', 'HomeController@mainpage');
 Route::get('/category', function () {
     return view('category');
-});
+ });
+Route::get('/tags', function () {
+    return view('tags');
+ });
+Route::get('/company/{company}', 'HomeController@company');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/news/{id}', 'NewsController@show');
 
-Route::get('/news', function () {
-    return view('news');
-});
+// Posts operations for users
+	Route::get('/add','PostController@add');
+	Route::get('/posts','PostController@userPosts');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+	Route::post('/user/addpost','PostController@store');
 
-Route::get('/add', function () {
-    return view('post.add');
-});
+	Route::get('/post/{post}','PostController@edit');
+	Route::post('/post/{post}','PostController@update');
+	Route::get('/post/delete/{post}/','PostController@deleteCheck');
+	Route::post('/post/delete/{post}','PostController@delete');
 
-// Posts
+	Route::post('/post/unpublish/{post}','PostController@unpublish');
+	Route::post('/post/publish/{post}','PostController@publish');
 
-Route::post('/user/{user}/addnews','PostController@store');
+// Moderator
+	Route::get('/waitlist','AdminPanelController@waitlist');
+	Route::post('/post/approve/{post}','PostController@approve');
+	Route::get('/approved','AdminPanelController@approved');
+	Route::post('/post/refuse/{post}','PostController@refuse');
+	Route::get('/userlist','AdminPanelController@userlist');
 
-Route::get('/post/{post}','PostController@edit');
-Route::post('/post/{post}','PostController@update');
+	// Post operations for moderator
+	Route::get('/post/editByModerator/{post}','PostController@editByModerator');
+	Route::post('/post/editByModerator/{post}','PostController@updateByModerator');
+	Route::get('/post/deleteByModerator/{post}/','PostController@deleteCheckByModerator');
+	Route::post('/post/deleteByModerator/{post}','PostController@deleteByModerator');
+//Menu
+Route::get('/menu', 'MenuController@show');
+Route::post('/menu', 'MenuController@create');
+Route::post('{menu}/submenu', 'SubmenuController@create');
+Route::get('/editmenu/{id}', 'MenuController@edit');
+Route::get('/editsubmenu/{submenu}', 'SubmenuController@edit');
+Route::post('/editmenu/{id}', 'MenuController@update');
+Route::post('/editsubmenu/{submenu}', 'SubmenuController@update');
+Route::get('/deletemenu/{id}', 'MenuController@delete');
+Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 
-Route::get('/post/delete/{post}/','PostController@deleteCheck');
-Route::post('/post/delete/{post}','PostController@delete');
-Route::get('/post/unpublish/{post}/','PostController@unpublishCheck');
-Route::post('/post/unpublish/{post}','PostController@unpublish');
+// Admin
+	Route::get('/dashboard','AdminPanelController@dashboard');
+	Route::get('/stats','AdminPanelController@stats');
+	Route::get('/makeUser/{user}/','UserController@makeUser');
+	Route::get('/makeModerator/{user}/','UserController@makeModerator');
+	Route::get('/makeAdmin/{user}/','UserController@makeAdmin');
+	Route::get('/deleteUser/{user}/','UserController@delete');
 
-Route::get('/user/{user}','PostController@allposts');
-
-// End of posts
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
+ Route::get('/home', 'HomeController@index');
 
 Route::get('/math','CategoryController@math');
 Route::post('/math','CategoryController@mysearch');
-
-
-
-
-
-
 
 
 Route::get('/showuser/{id}', function ($id) {
@@ -116,3 +135,8 @@ Route::get('/showuser/{id}', function ($id) {
 //     $user=User::find($id);
 //     return $user->following;
 // });
+
+//Vugar
+Route::get('/companyedit/{company}','CompanyController@edit');
+
+Route::post('/companyedit/{id}','CompanyController@update');

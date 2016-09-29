@@ -1,0 +1,63 @@
+.register{
+  .sectionHeader{
+    padding-top:30px;
+    display:block;
+    position: relative;
+    overflow: hidden;
+    h1{
+      display: inline-block;
+      padding-right: 30px;
+    }
+    &:after{
+      background-color: darkslategray;
+      content:"";
+      display: inline-block;
+      position: absolute;
+      top:70%;
+      height: 1px;
+      width:100%;
+    }
+
+    .rect{
+      display:inline-block;
+      margin-right: 10px;
+      background-color:#93b228;
+      height:30px;
+      width:30px;
+      transform: rotate(45deg);
+      border-radius:10px;
+    }
+  }
+
+  .submit-button{
+		width: 105px;
+		height: 40px;
+		background-color:#93B228;
+		color: white;
+    transition:all 0.4s ease;
+		border:none;
+		&:hover{
+			background-color: $navColor;
+		}
+	}
+
+  .user-type-button{
+      text-align:center;
+      padding:35px 0px;
+      background-color:$navColor;
+      font-size:2em;
+      color:white;
+      transition:background-color 1s ease;
+      &:hover{
+        background-color:$navTextColor;
+      }
+  }
+  #registeras{
+    background-color:$navColor;
+    color:white;
+    text-align:center;
+    padding:10px 0;
+    margin-bottom:20px;
+  }
+
+}
