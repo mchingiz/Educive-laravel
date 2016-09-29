@@ -58,6 +58,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/math','CategoryController@math');
+Route::post('/math','CategoryController@mysearch');
 
 
 

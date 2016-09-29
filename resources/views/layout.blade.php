@@ -67,9 +67,10 @@
 					</li>
             	<li><a href="#">Contact Us<span class="sr-only"</span></a></li>
          	</ul>
-         	<form class="navbar-form navbar-right full-width-form">
+         	<form action="math" method="POST" class="navbar-form navbar-right full-width-form">
+         	{{csrf_field()}}
             	<div class="form-group">
-               	<input type="text" class="form-control" placeholder="Search">
+               	<input type="text" name="search" class="form-control" placeholder="Search">
                	<button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
             	</div>
          	</form>
