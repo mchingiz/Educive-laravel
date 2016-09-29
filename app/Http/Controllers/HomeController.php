@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Menu;
 
+
 class HomeController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $menus=Menu::all();
+        view()->share('menus', $menus);
     }
 
     /**
@@ -30,8 +32,12 @@ class HomeController extends Controller
 
     public function mainpage()
     { $menus=Menu::all();
-
+      return view('index');
         return view('index',compact('menus'));
+    }
+    public function contact()
+    {
+      return view('contact');
     }
 
 

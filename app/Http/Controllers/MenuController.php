@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Menu;
 class MenuController extends Controller
 {
+  public function __construct(){
+		$this->middleware('admin');
+	}
     public function show(){
         $data=Menu::all();
         return view('menu.menu',compact('data'));

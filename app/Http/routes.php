@@ -28,9 +28,7 @@ Route::get('/category', function () {
 Route::get('/tags', function () {
     return view('tags');
  });
-Route::get('/contact', function () {
-    return view('contact');
- });
+Route::get('/contact', 'HomeController@contact');
 
 // Posts operations for users
 	Route::get('/add','PostController@add');
@@ -81,17 +79,7 @@ Route::auth();
 
  Route::get('/home', 'HomeController@index');
 
-
-
-
-
 Route::get('/math','CategoryController@math');
-
-
-
-
-
-
 
 
 Route::get('/showuser/{id}', function ($id) {
