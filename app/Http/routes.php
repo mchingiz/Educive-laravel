@@ -29,6 +29,8 @@ Route::get('/tags', function () {
     return view('tags');
  });
 Route::get('/company/{company}', 'HomeController@company');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/news/{id}', 'NewsController@show');
 
 // Posts operations for users
 	Route::get('/add','PostController@add');

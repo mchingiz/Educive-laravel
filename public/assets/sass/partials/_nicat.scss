@@ -14,6 +14,13 @@
 	margin-left: -15px;
 	display: block;
 }
+.infoPhoto {
+    .fa{  
+        padding:5px;
+        padding-bottom:20px;
+        color: #FA5B0D;
+    }
+}
 .headline-row h1 {
     background: #fff;
     position: relative;
@@ -72,6 +79,7 @@ h1.caticon span {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     background-color: #fa5b0d;
+    margin-left: 5px;
 }
 .test span i{
 	margin-left:-11px;
@@ -82,22 +90,43 @@ h1.caticon span {
 a{
 	color: black;
 }
-ul.post-tags li, .section-post-comment button.btn-primary {
+ul.post-tags a li, .section-post-comment button.btn-primary {
     display: inline-block;
     background: #93b228;
     margin-bottom: 5px;
     border: 0px solid #f1f2f5;
-    color: #fff;
+    color: #444444;
     padding: 10px 30px;
 }
-ul.post-tags li:hover, .section-post-comment button.btn-primary:hover {
+ul.post-tags a li:hover {
+
+    transition: all 0.3s ease-in-out;
+
+    a{
+        color: white;
+    }
+}
+
+ul.post-tags a li:hover, .section-post-comment button.btn-primary:hover {
     border: 0px solid #1d2537;
     color: #fff;
     background: #1d2537;
     text-decoration: none;
 }
+ul.post-tags a{
+    text-decoration: none;
+}
+
+ul.post-tags{
+    display: block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding:0px;
+}
+
 .post {
     position: relative;
 }
-
 }
+
