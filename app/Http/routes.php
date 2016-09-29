@@ -21,18 +21,14 @@ use App\Submenu;
 
 
 
-Route::get('/', function () {
-    return view('index');
- });
+Route::get('/', 'HomeController@mainpage');
 Route::get('/category', function () {
     return view('category');
  });
 Route::get('/tags', function () {
     return view('tags');
  });
-Route::get('/contact', function () {
-    return view('contact');
- });
+Route::get('/contact', 'HomeController@contact');
 
 // Posts operations for users
 	Route::get('/add','PostController@add');
@@ -81,19 +77,9 @@ Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
-
-
-
+ Route::get('/home', 'HomeController@index');
 
 Route::get('/math','CategoryController@math');
-
-
-
-
-
-
 
 
 Route::get('/showuser/{id}', function ($id) {
