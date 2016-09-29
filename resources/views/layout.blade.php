@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-   
+
 </head>
 <body>
 <div>
@@ -35,39 +35,20 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          	<ul class="nav navbar-nav">
-             <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
-						<ul class="dropdown-menu" id="drop1">
-							<li><a href="#">Trainings</a></li>
-							<li><a href="#">Camps</a></li>
-							<li><a href="#">Conferences</a></li>
-							<li><a href="#">Contest</a></li>
-							<li><a href="#">Workshops</a></li>
-							<li><a href="#">Adventures</a></li>
-							<li><a href="#">Exhibition</a></li>
-							<li><a href="#">Competition</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">Vacancies<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Jobs</a></li>
-							<li><a href="#">Interships</a></li>
-							<li><a href="#">Volunteering</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Scholarship<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Bachelor</a></li>
-							<li><a href="#">Grants</a></li>
-							<li><a href="#">Master</a></li>
-							<li><a href="#">Phd</a></li>
-							<li><a href="#">Fellowship</a></li>
-						</ul>
-					</li>
-            	<li><a href="#">Contact Us<span class="sr-only"</span></a></li>
+					<li><a href="{{url('/')}}">Home</a></li>
+					@foreach ($menus as $menu)
+						@if( count($menu->submenus->all())>0)
+						<li class="dropdown">
+							<a href="{{url($menu->link)}}" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">{{$menu->name}}<span class="caret"></span></a>
+							<ul class="dropdown-menu" id="drop1">
+								@foreach($menu->submenus as $submenu)
+								<li><a href="{{url($submenu->link)}}">{{$submenu->name}}</a></li>
+								@endforeach
+							</ul>
+						@else
+							<li class="active"><a href="{{url($menu->link)}}">{{$menu->name}}<span class="sr-only">(current)</span></a></li>
+						@endif
+					@endforeach
          	</ul>
 
 				@if (Auth::guest())

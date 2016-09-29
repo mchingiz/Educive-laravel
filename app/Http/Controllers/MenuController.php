@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Menu;
 use App\Post;
@@ -19,6 +19,8 @@ class MenuController extends Controller
 			])->get()->count();
 
 			$this->middleware('admin');
+  public function __construct(){
+		$this->middleware('admin');
 	}
     public function show(){
         $data=Menu::all();
