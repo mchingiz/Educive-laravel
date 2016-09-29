@@ -271,6 +271,10 @@
   #pages .media-object {
     margin-left: -15px;
     display: block; }
+  #pages .infoPhoto .fa {
+    padding: 5px;
+    padding-bottom: 20px;
+    color: #FA5B0D; }
   #pages .headline-row h1 {
     background: #fff;
     position: relative;
@@ -322,25 +326,38 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    background-color: #fa5b0d; }
+    background-color: #fa5b0d;
+    margin-left: 5px; }
   #pages .test span i {
     margin-left: -11px;
     margin-top: 3px;
     font-size: 12px; }
   #pages a {
     color: black; }
-  #pages ul.post-tags li, #pages .section-post-comment button.btn-primary {
+  #pages ul.post-tags a li, #pages .section-post-comment button.btn-primary {
     display: inline-block;
     background: #93b228;
     margin-bottom: 5px;
     border: 0px solid #f1f2f5;
-    color: #fff;
+    color: #444444;
     padding: 10px 30px; }
-  #pages ul.post-tags li:hover, #pages .section-post-comment button.btn-primary:hover {
+  #pages ul.post-tags a li:hover {
+    transition: all 0.3s ease-in-out; }
+    #pages ul.post-tags a li:hover a {
+      color: white; }
+  #pages ul.post-tags a li:hover, #pages .section-post-comment button.btn-primary:hover {
     border: 0px solid #1d2537;
     color: #fff;
     background: #1d2537;
     text-decoration: none; }
+  #pages ul.post-tags a {
+    text-decoration: none; }
+  #pages ul.post-tags {
+    display: block;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 0px; }
   #pages .post {
     position: relative; }
 
