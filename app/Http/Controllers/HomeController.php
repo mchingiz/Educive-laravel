@@ -40,6 +40,10 @@ class HomeController extends Controller
     public function showPost($slug)
     { $post=Post::where('slug','=',$slug)->get();
       $post=$post[0];
+			$post->count=$post->count+1;
+			$post->update([
+						'count' => $post->count+1,
+					]);
       return view('news',compact('post'));
     }
 
