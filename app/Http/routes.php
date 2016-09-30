@@ -32,6 +32,10 @@ Route::get('/company/{company}', 'HomeController@company');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/news/{id}', 'NewsController@show');
 
+// User
+Route::get('/myfollowings','UserController@myFollowings');
+Route::post('/deleteMe/{user}','UserController@deleteMe');
+
 // Posts operations for users
 	Route::get('/add','PostController@add');
 	Route::get('/posts','PostController@userPosts');
@@ -77,6 +81,9 @@ Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 	Route::get('/makeAdmin/{user}/','UserController@makeAdmin');
 	Route::get('/deleteUser/{user}/','UserController@delete');
 
+// Follow System
+	Route::post('/follow/{user}/{company}','UserController@follow');
+	Route::post('/unfollow/{user}/{company}','UserController@unfollow');
 
 Route::auth();
 

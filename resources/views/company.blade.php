@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-	News
+	{{ $company->name }}
 @stop
 
 @section('content')
@@ -12,7 +12,19 @@
 			</div>
 			<div class="col-md-9 col-sm-12">
 				<h1>{{ $company->name }}</h1>
-				<form
+				@unless( $user->type == 'company')
+					@if(!$follow)
+						<form method="post" action="{{ url('/follow/'.$user->id.'/'.$company->id) }}" id="follow">
+							{{ csrf_field() }}
+							<input type="submit" class="btn btn-success" value="Follow">
+						</form>
+					@else
+						<form method="post" action="{{ url('/unfollow/'.$user->id.'/'.$company->id) }}" id="follow">
+							{{ csrf_field() }}
+							<input type="submit" class="btn btn-warning" value="Unfollow">
+						</form>
+					@endif
+				@endunless
 				<p class="link">
 					@if( $company->facebook )
 					<a href="{{ $company->facebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -37,21 +49,23 @@
 					<span>&ndash;&ndash; <i>Admin</i></span>
 				</p>
 			</div> -->
-			<div class="archives col-md-12">
-				<div class="col-md-3 col-sm-12"><h2>{{ $company->name }}'s Posts</h2></div>
-				<div class="col-md-9 hidden-sm"><div class="xett"></div></div>
-				@foreach( $posts as $post )
-				<div class="col-md-12 post">
-					<div class="col-md-3 col-sm-12"><img src="{{ $post->image }}" class="img-responsive"></div>
-					<div class="col-md-9 col-sm-12">
-						<a href="#"><h4>
-						{{ $post->title }}</h4></a>
-						<span>25 January, 2015</span>
-						<p>{!! $post->body !!}</p>
+			@if($posts)
+				<div class="archives col-md-12">
+					<div class="col-md-3 col-sm-12"><h2>{{ $company->name }}'s Posts</h2></div>
+					<div class="col-md-9 hidden-sm"><div class="xett"></div></div>
+					@foreach( $posts as $post )
+					<div class="col-md-12 post">
+						<div class="col-md-3 col-sm-12"><img src="{{ $post->image }}" class="img-responsive"></div>
+						<div class="col-md-9 col-sm-12">
+							<a href="#"><h4>
+							{{ $post->title }}</h4></a>
+							<span>25 January, 2015</span>
+							<p>{!! $post->body !!}</p>
+						</div>
 					</div>
+					@endforeach
 				</div>
-				@endforeach
-			</div>
+			@endif
 		</div>
 	</section>
 @stop

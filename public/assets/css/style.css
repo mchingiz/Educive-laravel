@@ -509,6 +509,8 @@ html, body {
     padding: 5px; }
     #author .border span {
       color: gray; }
+  #author #follow {
+    margin-bottom: 15px; }
   #author .archives {
     padding: 20px 0px; }
     #author .archives .post {

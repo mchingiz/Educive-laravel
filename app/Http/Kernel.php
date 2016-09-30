@@ -52,5 +52,6 @@ class Kernel extends HttpKernel
 		  'admin' => \App\Http\Middleware\AdminCheck::class,
 		  'moderator' => \App\Http\Middleware\ModeratorCheck::class,
 		  'company' => \App\Http\Middleware\CompanyCheck::class,
+		  'user' => \App\Http\Middleware\UserCheck::class,
     ];
 }
