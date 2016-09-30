@@ -5,9 +5,9 @@
 <div class="container">
 <div class="row usertype">
   <div style="height:150px"></div>
-  <div id="registeras"class=" btn col-md-7 col-md-offset-2">Register as </div>
-  <div id="user"class="btn user-type-button col-md-3 col-md-offset-2">User</div>
-  <div id="company" class="btn user-type-button col-md-3 col-md-offset-1">Company</div>
+  <div id="registeras" class="col-xs-12 col-md-7 col-md-offset-2">Register as </div>
+  <div id="user" class="btn col-xs-12 user-type-button col-md-3 col-md-offset-2">User</div>
+  <div id="company" class="btn user-type-button col-xs-12  col-md-3 col-md-offset-1">Company</div>
 </div>
 
 <div class="row form">

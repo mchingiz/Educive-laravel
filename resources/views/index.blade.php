@@ -130,8 +130,58 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-md-3">
-	</div>
+				<div class="col-md-12">
+					<div class="headline-row">
+						<h1 class="section-title caticon sbx"><i></i><span class="sidebar-trending"></span>Trending</h1>
+					</div>
+						<ul class="media-list">
+							<li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">Startup released a chip for little pets</a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li>
+							<li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">How to save money without leaving your couch </a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li>
+							<li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">$160G worth of cheese stolen in Wisconsin</a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li>
+							<li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li>
+							<li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li><li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li><li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+								</div>
+							</li>
+						</ul>
+				</div>
+
+
+	
 </div><!--  End of upcoming deadlines row -->
 
 <div class="sectionHeader">
