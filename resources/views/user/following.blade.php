@@ -56,3 +56,7 @@
 
 </div>
 @stop
+
+@section('footer-position')
+	footer-position
+@endsection

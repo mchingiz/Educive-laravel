@@ -55,7 +55,8 @@ class PostController extends Controller
 			'body' => 'required|min:5',
 			'image' => 'required|mimes:jpeg,bmp,png|max:2000',
 			'image' => 'required|mimes:jpeg,bmp,png|max:2000',
-			'category' => 'required'
+			'category' => 'required',
+			'tags' => 'required|min:1|max:5'
 		]);
 
 		$newPost = new Post;

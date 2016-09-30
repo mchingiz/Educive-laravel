@@ -57,7 +57,7 @@
 					<div class="col-md-12 post">
 						<div class="col-md-3 col-sm-12"><img src="{{ $post->image }}" class="img-responsive"></div>
 						<div class="col-md-9 col-sm-12">
-							<a href="#"><h4>
+							<a href="{{ url('/posts/'.$post->slug)}}"><h4>
 							{{ $post->title }}</h4></a>
 							<span>25 January, 2015</span>
 							<p>{!! $post->body !!}</p>

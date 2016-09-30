@@ -4,6 +4,14 @@
 	News
 @stop
 
+@section('head')
+<style>
+	.infoPhoto img{
+		width:100%;
+	}
+</style>
+@stop
+
 @section('content')
 	<section id="pages">
 		<div class="container">
@@ -14,13 +22,13 @@
 
 			<div class="infoPhoto">
 				<h1><b>{{$post->title}}</b></h1>
-				<img src="/img/{{$post->image}}" alt="Post img">
+				<img src="{{$post->image}}" alt="Post img">
 				<br>
 				<br>
 				<span class="fa fa-clock-o" aria-hidden="true">{{$post->deadline}}</span>  <span class="fa fa-rss" aria-hidden="true"> {{$post->user->name}}</span></br>
 				<br>
 			</div>
-				<p>{{$post->body}}</p>
+				<p>{!!$post->body!!}</p>
 
 				<div class="row">
 					<div class="col-md-12  section-tags">
@@ -30,18 +38,13 @@
 
 
 							<ul class="post-tags">
-								@foreach( $teqler as $teq)
-									<a href="#"><li>{{ $teq->name }}</li></a>
+								@foreach( $post->tags as $tag)
+									<a href="#"><li>{{ $tag->name }}</li></a>
 								@endforeach
 							</ul>
 						</div>
 					</div>
 
-					<ul class="post-tags">
-						@foreach( $post->tags as $tag)
-							<li><a href="#">{{ $tag->name }}</a></li>
-						@endforeach
-					</ul>
 
 
 				</div>

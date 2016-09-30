@@ -22,13 +22,14 @@
             	<i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <a class="navbar-brand" href="#">Educive.com</a>
-						<form class="col-xs-5 show-in-collapse">
-	 			    <div class="input-group">
-	 			      <input type="text" class="form-control" placeholder="Search for...">
-	 			      <span class="input-group-btn">
-	 			        <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-	 			      </span>
-	 			    </div><!-- /input-group -->
+					<form  action="{{ url('/math') }}" method="POST" class="col-xs-5 show-in-collapse">
+						{{csrf_field()}}
+		 			    <div class="input-group">
+		 			      <input type="text" name="search" class="form-control" placeholder="Search for...">
+		 			      <span class="input-group-btn">
+		 			        <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+		 			      </span>
+		 			    </div>
 	 				</form>
          </div>
 
@@ -51,13 +52,14 @@
 					@endforeach
          	</ul>
 
-         	<form action="math" method="POST" class="navbar-form navbar-right full-width-form">
+         	<!-- Deleted second form-->
+				<!-- <form action="math" method="POST" class="navbar-form navbar-right full-width-form">
          	{{csrf_field()}}
             	<div class="form-group">
                	<input type="text" name="search" class="form-control" placeholder="Search">
                	<button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
             	</div>
-         	</form>
+         	</form> -->
 
 
 
@@ -93,13 +95,14 @@
 				@endif
 
 
-				 <form class="navbar-form navbar-right hide-in-collapse">
+				 <form action="math" method="POST" class="navbar-form navbar-right hide-in-collapse">
+					 {{csrf_field()}}
 			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="Search for...">
+			      <input type="text" name="search" class="form-control" placeholder="Search for...">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			      </span>
-			    </div><!-- /input-group -->
+			    </div>
 				</form>
 
          </div><!-- /.navbar-collapse -->

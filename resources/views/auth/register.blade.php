@@ -17,6 +17,7 @@
 </div>
 </section>
 @endsection
+
 @section('footer-position')
 footer-position
 @endsection

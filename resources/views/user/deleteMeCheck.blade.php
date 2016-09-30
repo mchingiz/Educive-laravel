@@ -31,3 +31,7 @@ Are you sure?
 		</div>
 	</div>
 @stop
+
+@section('footer-position')
+	footer-position
+@endsection
