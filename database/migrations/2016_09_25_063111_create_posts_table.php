@@ -15,6 +15,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('category_id');
             $table->boolean('approved');
             $table->boolean('published')->default(1);
             $table->string('title');
@@ -22,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->date('deadline');
             $table->integer('count');
+            $table->string('slug');
             $table->timestamps();
         });
     }

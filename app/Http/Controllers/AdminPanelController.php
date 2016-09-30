@@ -17,13 +17,10 @@ class AdminPanelController extends Controller
 	public function __construct(){
 		$this->middleware('auth');
 		$this->user = Auth::user();
-
 		$this->middleware('admin',['only' => ['userlist']]);
-
 		if($this->user->type != 'admin' ){
 			$this->middleware('moderator', ['only' => ['dashboard','waitlist','approved']]);
 		}
-
 		$this->notApproved = Post::where([
 				['approved', '=', '0'],
 				['published', '=', '1'],

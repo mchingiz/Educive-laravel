@@ -45,7 +45,7 @@ Your all posts
 					<td>{{ $post->title }}</td>
 					<td>{!! $post->body !!}</td>
 					<td><img src='{{ $post->image }}'></td>
-					<td><a href="#" class='btn btn-default'>View</a></td>
+					<td><a href="{{url('/posts/'.$post->slug)}}" class='btn btn-default'>View</a></td>
 					<td><a href="{{ url('/post/'.$post->id) }}" class='btn btn-primary'>Edit</a></td>
 					<td>
 						@if($post->published)

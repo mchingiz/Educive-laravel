@@ -25,10 +25,11 @@ Route::get('/', 'HomeController@mainpage');
 Route::get('/category', function () {
     return view('category');
  });
+
 Route::get('/tags', function () {
     return view('tags');
  });
-Route::get('/contact', 'HomeController@contact');
+Route::get('/contactus', 'HomeController@contact');
 
 // Posts operations for users
 	Route::get('/add','PostController@add');
@@ -74,7 +75,9 @@ Route::get('/deletesubmenu/{submenu}', 'SubmenuController@delete');
 	Route::get('/makeAdmin/{user}/','UserController@makeAdmin');
 	Route::get('/deleteUser/{user}/','UserController@delete');
 
-
+//register
+Route::get('/register/company', 'Auth\AuthController@registerCompany');
+Route::get('/register/user', 'Auth\AuthController@registerUser');
 Route::auth();
 
  Route::get('/home', 'HomeController@index');
@@ -82,57 +85,12 @@ Route::auth();
 Route::get('/math','CategoryController@math');
 
 
-Route::get('/showuser/{id}', function ($id) {
-    $user=User::find($id);
-    return $user->posts;
-});
-//
-// Route::get('/showtext/{id}', function ($id) {
-//     $post=Post::find($id);
-//     return $post->user;
-// });
-//
-// Route::get('/showtexttag/{id}', function ($id) {
-//     $post=Post::find($id);
-//     return $post->tags;
-// });
-//
-// Route::get('/showtag/{id}', function ($id) {
-//     $tag=Tag::find($id);
-//     return $tag->posts;
-// });
-//
-// Route::get('/showtextcat/{id}', function ($id) {
-//   $post=Post::find($id);
-//   return $post->categories;
-// });
-//
-// Route::get('/showcat/{id}', function ($id) {
-//     $cat=Category::find($id);
-//     return $cat->posts;
-// });
-//
-// Route::get('/company/{id}', function ($id) {
-//     $com=Company::find($id);
-//     return $com->user;
-// });
-//
-// Route::get('/usercompany/{id}', function ($id) {
-//     $user=User::find($id);
-//     return $user->company;
-// });
-//
-// Route::get('/follower/{id}', function ($id) {
-//     $user=User::find($id);
-//     return $user->followers;
-// });
-//
-// Route::get('/following/{id}', function ($id) {
-//     $user=User::find($id);
-//     return $user->following;
-// });
 
-//Vugar
 Route::get('/companyedit/{company}','CompanyController@edit');
 
 Route::post('/companyedit/{id}','CompanyController@update');
+
+//Post
+Route::get('/posts/{slug}','HomeController@showPost');
+Route::get('/{menu}/{submenu}','HomeController@showCategory');
+Route::get('/{menu}','HomeController@showCategoryMenu');

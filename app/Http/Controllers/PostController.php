@@ -63,9 +63,9 @@ class PostController extends Controller
 			'title' => $request->title,
 			'body' => $request->body,
 			'deadline' => $request->deadline,
-			'image' => $url
+			'image' => $url,
+			'slug' =>  str_replace(" ","-",$request->title)
 			]);
-
 		return redirect('/posts');
 	}
 
