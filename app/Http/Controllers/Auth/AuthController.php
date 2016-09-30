@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Menu;
+use App\Company;
 class AuthController extends Controller
 {
     /*
@@ -65,12 +66,26 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+
+       $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'type' => $data['type'],
             'password' => bcrypt($data['password']),
         ]);
+
+        if($data['type']=='company'){
+          Company::create([
+               'name' => $data['name'],
+               'user_id' => $user->id,
+           ]);
+        }
+        return $user;
+
+
+
+
     }
 
     public function registerCompany(){
