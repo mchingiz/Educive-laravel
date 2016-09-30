@@ -151,9 +151,12 @@
       font-size: 30px; }
 #index .specialItem .itemContent {
   padding-top: 10px; }
-  #index .specialItem .itemContent h1 {
-    font-size: 15px;
-    padding-bottom: 10px; }
+  #index .specialItem .itemContent a {
+    text-decoration: none;
+    color: black; }
+    #index .specialItem .itemContent a h1 {
+      font-size: 15px;
+      padding-bottom: 10px; }
 #index .specialItem .itemImg {
   width: 100%;
   height: 110px; }
@@ -386,6 +389,14 @@
     padding: 0px; }
   #pages .post {
     position: relative; }
+  #pages .media-left {
+    height: 90px;
+    width: 90px;
+    overflow: hidden; }
+    #pages .media-left img {
+      width: 90px;
+      margin: 0;
+      height: 90px; }
 
 html, body {
   height: 100%; }

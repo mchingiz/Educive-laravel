@@ -47,7 +47,9 @@ class CategoryController extends Controller
      public function mysearch(Request $request){
 
 
-    	$posts=Post::where('title','LIKE', '%'.$request->search.'%')->orWhere('body', 'LIKE', '%'.$request->search.'%')->get();
+    	$posts=Post::where('title','LIKE', '%'.$request->search.'%')
+									->orWhere('body', 'LIKE', '%'.$request->search.'%')
+									->get();
 
     	return view('category', compact('posts'));
 
