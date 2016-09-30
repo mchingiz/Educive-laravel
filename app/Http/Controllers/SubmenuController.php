@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Submenu;
 use App\Menu;
+use App\Category;
 class SubmenuController extends Controller
 {
 
@@ -21,6 +22,11 @@ class SubmenuController extends Controller
       $submenu->link= strtolower("/".preg_replace('/\s+/', '',$menu->name."/".$request->name));
       $submenu->menu_id= $request->menu_id;
       $submenu->save();
+      $newcategory= new Category();
+      $newcategory->name=$submenu->name;
+      $newcategory->submenu_id=$submenu->id;
+      $newcategory->save();
+
       return back();
   }
   public function update(Submenu $submenu,Request $request){

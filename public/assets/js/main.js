@@ -49,15 +49,7 @@ jQuery(document).ready(function($) {
 	})
 
 
-    // register
-    form=$(".form").hide();
-    $(".user-type-button").on("click",function(){
-      $(".usertype").remove();
-      $(".form").show();
-      id=$(this).attr("id")
-      //sending to input
-      $("#type").val(id)
-    })
+  
 
   //Menu
 

@@ -74,7 +74,8 @@ class PostController extends Controller
 			'body' => $request->body,
 			'deadline' => $request->deadline,
 			'image' => $url,
-			'category' => $request->category
+			'category' => $request->category,
+			'slug' =>  str_replace(" ","-",$request->title),
 			]);
 
 		$tags = $request->tags;
@@ -84,9 +85,6 @@ class PostController extends Controller
 		foreach( $tags as $tag){
 			DB::table('post_tag')->insert(['post_id' => $currentPostID, 'tag_id' => $tag, 'created_at' => Carbon::now()]);
 		}
-
-
-
 
 		return redirect('/posts');
 	}
