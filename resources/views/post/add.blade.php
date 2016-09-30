@@ -38,7 +38,7 @@ Add news
 				<optgroup label="{{ $menuItem->name }}">
 					@foreach( $submenu as $submenuItem)
 						@if( $submenuItem->menu_id == $menuItem->id)
-							<option>{{ $submenuItem->name }}</option>
+							<option value="{{ $submenuItem->id }}">{{ $submenuItem->name }}</option>
 						@endif
 					@endforeach
 				</optgroup>

@@ -28,6 +28,24 @@ Edit news
 			<input type="date" name="deadline" id="deadline" class='form-control' value='{{ $post->deadline }}'>
 		</div>
 		<div class="input-group">
+			<label for='category'>Choose category</label>
+			<select class="form-control" id="category" name="category">
+				@foreach( $menu as $menuItem )
+				<optgroup label="{{ $menuItem->name }}">
+					@foreach( $submenu as $submenuItem)
+						@if( $submenuItem->menu_id == $menuItem->id)
+							@if( $submenuItem->menu_id == $post->category_id )
+								<option value="{{ $submenuItem->id }}" selected>{{ $submenuItem->name }}</option>
+							@else
+								<option value="{{ $submenuItem->id }}">{{ $submenuItem->name }}</option>
+							@endif
+						@endif
+					@endforeach
+				</optgroup>
+				@endforeach
+			</select>
+		</div>
+		<div class="input-group">
 			<label for='file'>Upload an image</label>
 			<input type="file" id="file" name='image' class="custom-file-input">
 		</div>

@@ -21,6 +21,9 @@ use App\Tag;
 class PostController extends Controller
 {
 	private $user;
+	private $menu;
+	private $submenu;
+	private $tags;
 
 	public function __construct(){
 		$this->middleware('auth');
@@ -33,6 +36,14 @@ class PostController extends Controller
 		}
 		$this->middleware('company', ['only' => ['userPosts','add','store','edit','update','deleteCheck','delete','publish','unpublish']]);
 
+
+		$this->menu = Menu::all();
+		$this->submenu = Submenu::all();
+		$this->tags = Tag::all();
+		view()->share('menu', $this->menu);
+		view()->share('submenu', $this->submenu);
+		view()->share('user', $this->user);
+		view()->share('tags', $this->tags);
 	}
 
 	// Methods for users
@@ -43,10 +54,7 @@ class PostController extends Controller
 	}
 
 	public function add(){
-		$menu = Menu::all();
-		$submenu = Submenu::all();
-		$tags = Tag::all();
-		return view('post.add',compact('menu','submenu','tags'));
+		return view('post.add');
 	}
 
 	public function store(Request $request){
@@ -70,12 +78,13 @@ class PostController extends Controller
 
 		$url = '/postimages/'.$targetName;
 
+
 		$this->user->posts()->create([
 			'title' => $request->title,
 			'body' => $request->body,
 			'deadline' => $request->deadline,
 			'image' => $url,
-			'category' => $request->category,
+			'category_id' => $request->category,
 			'slug' =>  str_replace(" ","-",$request->title),
 			]);
 
@@ -109,7 +118,7 @@ class PostController extends Controller
 					'title' => $request->title,
 					'body' => $request->body,
 					'deadline' => $request->deadline,
-					'category' => $request->category
+					'category_id' => $request->category,
 				]);
 		if( $request->file('image') ){
 			$newPost = new Post;
@@ -195,7 +204,7 @@ class PostController extends Controller
 			'title' => $request->title,
 			'body' => $request->body,
 			'deadline' => $request->deadline,
-			'category' => $request->category
+			'category_id' => $request->category,
 		]);
 
 		if( $request->file('image') ){
