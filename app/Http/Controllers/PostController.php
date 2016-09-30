@@ -58,6 +58,7 @@ class PostController extends Controller
 	}
 
 	public function store(Request $request){
+
 		$this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:5',
@@ -78,6 +79,18 @@ class PostController extends Controller
 
 		$url = '/postimages/'.$targetName;
 
+		// Get beginning DateTime of the event
+		$startsAt = $request->startsAt;
+		$startsAtDate = substr($startsAt,0,10);
+		$startsAtTime = substr($startsAt,11,14).":00";
+		$startsAt = $startsAtDate.' '.$startsAtTime;
+
+		// Get end DateTime of the event
+		$endsAt = $request->endsAt;
+		$endsAtDate = substr($endsAt,0,10);
+		$endsAtTime = substr($endsAt,11,14).":00";
+		$endsAt = $endsAtDate.' '.$endsAtTime;
+
 
 		$this->user->posts()->create([
 			'title' => $request->title,
@@ -85,6 +98,8 @@ class PostController extends Controller
 			'deadline' => $request->deadline,
 			'image' => $url,
 			'category_id' => $request->category,
+			'starts_at' => $startsAt,
+			'ends_at' => $endsAt,
 			'slug' =>  str_replace(" ","-",$request->title),
 			]);
 
@@ -137,7 +152,7 @@ class PostController extends Controller
 			]);
 		}
 
-		return back();
+		return redirect('/posts');
 	}
 
 	public function deleteCheck(Post $post){
