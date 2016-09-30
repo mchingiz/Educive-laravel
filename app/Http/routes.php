@@ -18,9 +18,6 @@ use App\Company;
 use App\Menu;
 use App\Submenu;
 
-
-
-
 Route::get('/', 'HomeController@mainpage');
 Route::get('/category', function () {
     return view('category');
@@ -34,6 +31,7 @@ Route::get('/news/{id}', 'NewsController@show');
 
 // User
 Route::get('/myfollowings','UserController@myFollowings');
+Route::get('/deleteMe/{user}','UserController@deleteMeCheck');
 Route::post('/deleteMe/{user}','UserController@deleteMe');
 
 // Posts operations for users

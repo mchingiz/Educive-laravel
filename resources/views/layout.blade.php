@@ -62,7 +62,13 @@
 					<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Settings</a></li>
-							<li><a href="#">Following</a></li>
+							@if( $user->type == 'company' )
+								<li><a href="/posts">My Posts</a></li>
+							@elseif( $user->type == 'user' )
+								<li><a href="/myfollowings">Following</a></li>
+							@elseif( $user->type == 'admin' )
+								<li><a href="/dashboard">Dashboard</a></li>
+							@endif
 							<li><a href="/logout">Logout</a></li>
 						</ul>
 					</li>

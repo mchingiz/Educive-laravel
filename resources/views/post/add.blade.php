@@ -14,11 +14,11 @@ Add news
 		{{ csrf_field() }}
 		<div class='form-group'>
 			<label for='title'>Title</label>
-			<input class="form-control" type="text" name="title" id='title' value=" {{ old('title') }} ">
+			<input class="form-control" type="text" name="title" id='title' value="{{old('title')}}">
 		</div>
 		<div class="input-group" style='width:100%'>
 			<label for='body'>Body</label>
-			<textarea name="body">{{ old('body') }}</textarea>
+			<textarea name="body">{{old('body')}}</textarea>
 			<script>
 				CKEDITOR.replace( 'body' );
          </script>
@@ -48,7 +48,7 @@ Add news
 
 		<div class="input-group">
 			<label for='selectTag' style='display:block'>Choose tags</label>
-			<select class="js-example-basic-multiple" multiple="multiple" name="tag" id='selectTag' style="width:235px">
+			<select class="js-example-basic-multiple" multiple="multiple" name="tags[]" id='selectTag' style="width:235px">
 				@foreach( $tags as $tag )
 					<option value="{{$tag->id}}">{{ $tag->name }}</option>
 				@endforeach

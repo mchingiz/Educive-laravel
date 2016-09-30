@@ -65,7 +65,7 @@ class UserController extends Controller
 	}
 
 	public function unfollow(User $user, Company $company){
-		DB::Table('followers')->where('user_id', '=', $this->user->id)->where('follow_id', '=', $company->id)->delete();
+		DB::table('followers')->where('user_id', '=', $this->user->id)->where('follow_id', '=', $company->id)->delete();
 		return back();
 	}
 
@@ -76,8 +76,12 @@ class UserController extends Controller
 		return view('user.following',compact('followings','noFollower'));
 	}
 
+	public function deleteMeCheck(){
+		return view('user.deleteMeCheck');
+	}
+
 	public function deleteMe(Request $request,User $user){
 		$user->delete();
-		return back();
+		return redirect('/');
 	}
 }

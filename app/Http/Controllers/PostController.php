@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\uploadedFile;
 
 use Auth;
+use DB;
 use App\Http\Requests;
 use App\Post;
 use App\User;
@@ -73,6 +76,17 @@ class PostController extends Controller
 			'image' => $url,
 			'category' => $request->category
 			]);
+
+		$tags = $request->tags;
+
+		$currentPostID = $this->user->posts()->orderBy('id', 'desc')->first()->id;
+
+		foreach( $tags as $tag){
+			DB::table('post_tag')->insert(['post_id' => $currentPostID, 'tag_id' => $tag, 'created_at' => Carbon::now()]);
+		}
+
+
+
 
 		return redirect('/posts');
 	}
