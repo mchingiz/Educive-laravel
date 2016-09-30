@@ -8,16 +8,18 @@
 	<section id="pages">
 		<div class="container">
 			<div class="col-md-12">
-				<p><a href="#">Home</a> / <a href="#">Category</a> / Mixed Classic Coffee Shop and Bistro opened</p>
+				<p><a href="{{url($post->category->submenu->menu->link)}}">{{$post->category->submenu->menu->name}}</a> / <a href="{{url($post->category->submenu->menu->link)}}">{{$post->category->submenu->name}}</a> /{{$post->title}}</p>
 			</div>
 			<div class="col-lg-9 col-md-9 section-single">
+
 			<div class="infoPhoto">
-				<h1><b>{{$post->title}}</b></h1>				
+				<h1><b>{{$post->title}}</b></h1>
 				<img src="/img/{{$post->image}}" alt="Post img">
 				<br>
 				<br>
-				<span class="fa fa-clock-o" aria-hidden="true"></span> <span>{{$post->deadline}}</span>  <span class="fa fa-rss" aria-hidden="true"> </span><span>John Doe</span>
-			</div>	
+				<span class="fa fa-clock-o" aria-hidden="true">{{$post->deadline}}</span>  <span class="fa fa-rss" aria-hidden="true"> {{$post->user->name}}</span></br>
+				<br>
+			</div>
 				<p>{{$post->body}}</p>
 
 				<div class="row">
@@ -25,8 +27,8 @@
 
 						<div class="headline-row">
 							<h1 class="section-title caticon sbx"><i>T</i><span class="sport"></span>Tags</h1>
-						
-					
+
+
 							<ul class="post-tags">
 								@foreach( $teqler as $teq)
 									<a href="#"><li>{{ $teq->name }}</li></a>
@@ -34,6 +36,14 @@
 							</ul>
 						</div>
 					</div>
+
+					<ul class="post-tags">
+						@foreach( $post->tags as $tag)
+							<li><a href="#">{{ $tag->name }}</a></li>
+						@endforeach
+					</ul>
+
+
 				</div>
 				<div class="row">
 				<div class="col-md-12 section-post-related">

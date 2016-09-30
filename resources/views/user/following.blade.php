@@ -53,6 +53,6 @@
 		<h1>You don't follow any company</h1>
 	@endif
 	<a href="{{ url('/deleteMe/'.$user->id) }}" class="btn btn-danger">Delete my account</a>
-	
+
 </div>
 @stop
