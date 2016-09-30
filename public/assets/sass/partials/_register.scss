@@ -34,7 +34,7 @@
 		height: 40px;
 		background-color:#93B228;
 		color: white;
-    transition:all 0.4s ease;
+    transition:all 0.2s ease;
 		border:none;
 		&:hover{
 			background-color: $navColor;
@@ -47,7 +47,7 @@
       background-color:$navColor;
       font-size:2em;
       color:white;
-      transition:background-color 1s ease;
+      transition:background-color 0.3s ease;
       &:hover{
         background-color:$navTextColor;
       }
@@ -61,3 +61,23 @@
   }
 
 }
+// Extra small devices (portrait phones, less than 544px)
+@media (max-width: 543px) { }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767px) { 
+  .usertype{
+    padding-left:10px;
+    padding-right:10px;
+  }
+ }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) { 
+  #company{margin-top: 10px;}
+
+  
+ }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199px) {  }
