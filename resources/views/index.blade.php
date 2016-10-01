@@ -12,45 +12,21 @@
 		<div class="row" id="row1">
 			<div class="col-md-8">
 				<div class="slider">
-
-					<div class="bigItem item" id="sliderItem1">
+@for($i=1;$i<=3;$i++)
+					<div class="bigItem item" id="sliderItem{{$i}}">
 						<div class="itemImg">
-							<img class="img-responsive" src="images/item1.jpg">
+							<img class="img-responsive" src="{{url($lastPosts[0]->image)}}">
 						</div>
 						<div class="gradient"></div>
 						<div class="itemContent innerItemContent">
-							<h1>NYC Love Bikers</h1>
+							<a style="text-decoration:none; color:black" href="{{url('/posts/'.$lastPosts[$i]->slug)}}"><h1>{{$lastPosts[$i]->title}}</h1></a>
 							<span class="fa fa-clock-o" aria-hidden="true"></span>
-							<span class="deadline">25 Jan, 2016</span>
-							<p>Lorem ipsum dolor dummy text goes here</p>
+							<span class="deadline">{{$lastPosts[$i]->deadline}}</span>
+							<p>{!!str_limit($lastPosts[$i]->body, 255)!!}</p>
 						</div>
 					</div>
+@endfor
 
-					<div class="bigItem item"  id="sliderItem2" style="display:none">
-						<div class="itemImg">
-							<img class="img-responsive" src="images/item2.jpg">
-						</div>
-						<div class="gradient"></div>
-						<div class="itemContent innerItemContent">
-							<h1>Or they don't?</h1>
-							<span class="fa fa-clock-o" aria-hidden="true"></span>
-							<span class="deadline">25 Feb, 2016</span>
-							<p>Lorem ipsum dolor dummy text goes here</p>
-						</div>
-					</div>
-
-					<div class="bigItem item"  id="sliderItem3" style="display:none">
-						<div class="itemImg">
-							<img class="img-responsive" src="images/item3.jpg">
-						</div>
-						<div class="gradient"></div>
-						<div class="itemContent innerItemContent">
-							<h1>Or they don't?</h1>
-							<span class="fa fa-clock-o" aria-hidden="true"></span>
-							<span class="deadline">25 Feb, 2016</span>
-							<p>Lorem ipsum dolor dummy text goes here</p>
-						</div>
-					</div>
 
 				<span class="fa fa-chevron-left" aria-hidden="true"></span>
 				<span class="fa fa-chevron-right" aria-hidden="true"></span>
@@ -59,13 +35,15 @@
 			<div class="col-md-4 col-xs-12">
 				<div class="mediumItem item col-md-12 col-sm-6">
 					<div class="itemImg">
-						<img class="img-responsive" src="images/item5.jpg">
+						<img class="img-responsive" src="{{url($lastPosts[4]->image)}}">
 					</div>
 					<div class="gradient"></div>
 					<div class="itemContent innerItemContent">
-						<h1>London Stock Exchange intensified</h1>
+						<a style="text-decoration:none; color:black" href="{{url('/posts/'.$lastPosts[4]->slug)}}">
+							<h1>{!!str_limit($lastPosts[4]->title, 70)!!}</h1>
+						</a>
 						<span class="fa fa-clock-o" aria-hidden="true"></span>
-						<span class="deadline">25 Jan, 2016</span>
+						<span class="deadline">{{$lastPosts[4]->deadline}}</span>
 					</div>
 				</div>
 				<!-- Divider -->
@@ -73,33 +51,40 @@
 
 				<div class="mediumItem item col-md-12 col-sm-6">
 					<div class="itemImg">
-						<img class="img-responsive" src="images/item2.jpg">
+						<img class="img-responsive" src="{{url($lastPosts[5]->image)}}">
 					</div>
 					<div class="gradient"></div>
 					<div class="itemContent innerItemContent">
-						<h1>London Stock Exchange intensified</h1>
+						<a style="text-decoration:none; color:black" href="{{url('/posts/'.$lastPosts[5]->slug)}}">
+							<h1>{!!str_limit($lastPosts[5]->title, 70)!!}</h1>
+						</a>
 						<span class="fa fa-clock-o" aria-hidden="true"></span>
-						<span class="deadline">25 Jan, 2016</span>
+						<span class="deadline">{{$lastPosts[5]->deadline}}</span>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="row" id="row2">
+			@for($i=6;$i<=8;$i++)
 			<div class="col-md-4 col-sm-4">
 				<div class="mediumItem item">
 					<div class="itemImg">
-						<img class="img-responsive" src="images/item6.jpg">
+						<img class="img-responsive" src="{{url($lastPosts[$i]->image)}}">
 					</div>
 					<div class="gradient"></div>
 					<div class="itemContent outerItemContent">
-						<h1>Popular Destinations in North America</h1>
+						<a style="text-decoration:none; color:black" href="{{url('/posts/'.$lastPosts[$i]->slug)}}">
+							<h1>{!!str_limit($lastPosts[$i]->title, 70)!!}</h1>
+						</a>
 						<span class="fa fa-clock-o" aria-hidden="true"></span>
-						<span class="deadline">25 Jan, 2016</span>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+						<span class="deadline">{{$lastPosts[$i]->deadline}}</span>
+						<p>{!!str_limit($lastPosts[$i]->body, 100)!!}</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4">
+			@endfor
+			<!-- <div class="col-md-4 col-sm-4">
 				<div class="mediumItem item">
 					<div class="itemImg">
 						<img class="img-responsive" src="images/item2.jpg">
@@ -127,7 +112,7 @@
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
