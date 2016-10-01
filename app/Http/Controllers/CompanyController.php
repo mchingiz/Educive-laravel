@@ -7,9 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Company;
+use App\Menu;
+use Auth;
+
 
 class CompanyController extends Controller
 {
+    public function __construct(){
+        $menus=Menu::all();
+        $this->user = Auth::user();
+        view()->share('menus', $menus);
+        view()->share('user', $this->user);
+    }
 
     public function edit(Company $company)
     {
