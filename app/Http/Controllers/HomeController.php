@@ -25,11 +25,19 @@ class HomeController extends Controller
 
     public function index()
     {
+
         return view('home');
     }
 
     public function mainpage()
-    { 	$trendingPosts= DB::table('posts')
+    { $lastPosts = DB::table('posts')
+								->where('approved', '=', 1)
+								->where('published', '=', 1)
+                ->orderBy('id', 'desc')
+								->limit(9)
+                ->get();
+
+			$trendingPosts= DB::table('posts')
                 ->orderBy('count', 'desc')
 								->limit(8)
                 ->get();
@@ -39,7 +47,7 @@ class HomeController extends Controller
 									->inRandomOrder()
 									->limit(6)
 									->get();
-        return view('index',compact('trendingPosts','editorChoices'));
+        return view('index',compact('trendingPosts','editorChoices','lastPosts'));
     }
     public function contact()
     {
