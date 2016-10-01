@@ -27,7 +27,7 @@ Approval pending posts
 						Updated time
 					</td>
 					<td>
-						Post link
+						<a href="{{ url('/posts/'.$post->slug) }}">Link</a>
 					</td>
 					<td colspan="3">
 						Operations

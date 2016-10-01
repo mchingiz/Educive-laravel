@@ -15,11 +15,12 @@ use App\Category;
 class HomeController extends Controller
 {
 	protected $user;
+	protected $menus;
 
 	public function __construct(){
-		$menus=Menu::all();
+		$this->menus=Menu::all();
 		$this->user = Auth::user();
-		view()->share('menus', $menus);
+		view()->share('menus', $this->menus);
 		view()->share('user', $this->user);
 	}
 
@@ -29,22 +30,66 @@ class HomeController extends Controller
     }
 
     public function mainpage()
-    { $menus=Menu::all();
-      return view('index');
-        return view('index',compact('menus'));
+    { 	$trendingPosts= DB::table('posts')
+          	->orderBy('count', 'desc')
+					->limit(8)
+          	->get();
+			$editorChoices = DB::table('posts')
+					->where('approved', '=', 1)
+					->where('published', '=', 1)
+					->inRandomOrder()
+					->limit(6)
+					->get();
+
+			$allposts=array();
+			foreach($this->menus as $menu){
+				$submenuIDs = array();
+				foreach($menu->submenus as $submenu){
+					array_push($submenuIDs,$submenu->category->id);
+				}
+				$menuPosts = DB::table('posts')
+					->whereIn('category_id',$submenuIDs)
+					->orderBy('id','desc')
+					->where('approved', '=', 1)
+					->where('published', '=', 1)
+					->limit(9)
+					->get();
+				array_push($allposts,$menuPosts);
+			}
+      	return view('index',compact('trendingPosts','editorChoices','allposts'));
     }
     public function contact()
     {
       return view('contact');
     }
     public function showPost($slug)
-    { $post=Post::where('slug','=',$slug)->get();
+    {
+		 $post=Post::where('slug','=',$slug)->get();
       $post=$post[0];
 			$post->count=$post->count+1;
 			$post->update([
 						'count' => $post->count+1,
 					]);
-      return view('news',compact('post'));
+
+			$trendingPosts= DB::table('posts')
+		                ->orderBy('count', 'desc')
+										->limit(6)
+		                ->get();
+			$otherPosts = DB::table('posts')
+							        ->where('approved', '=', 1)
+							        ->where('published', '=', 1)
+											->inRandomOrder()
+											->limit(5)
+							        ->get();
+
+			$authorPosts = DB::table('posts')
+										->where('user_id', '=', $post->user_id)
+										->where('published', '=', 1)
+										->where('approved', '=', 1)
+										->inRandomOrder()
+										->limit(2)
+										->get();
+      return view('news',compact('post','trendingPosts','otherPosts','authorPosts'));
     }
 
     public function showCategory($menu ,$submenu){

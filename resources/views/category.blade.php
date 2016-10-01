@@ -17,6 +17,7 @@
 <div class="row">
 		<section class="col-md-12 col-sm-12 col-lg-12 section-main-content">
 			 @foreach ($posts as $post)
+			 @if($post->approved==1 && $post->published==1)
 
 
 		<div class="post col-md-4 col-sm-12 col-xs-6">
@@ -50,7 +51,7 @@
 						</div>
 
 
-
+@endif
 @endforeach
 		</section>
 	</div>

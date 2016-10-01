@@ -132,58 +132,35 @@
 	</div>
 
 	<div class="col-md-3">
-		<div class="headline-row">
-			<h1 class="section-title caticon sbx"><i></i><span class="sidebar-trending"></span>Trending</h1>
-		</div>
-		<ul class="media-list">
-			<li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">Startup released a chip for little pets</a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
-				</div>
-			</li>
-			<li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">How to save money without leaving your couch </a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
-				</div>
-			</li>
-			<li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">$160G worth of cheese stolen in Wisconsin</a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
-				</div>
-			</li>
-			<li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
-				</div>
-			</li>
-			<li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
-				</div>
-			</li><li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
-				</div>
-			</li><li class="media post-spacer">
-				<div class="media-body">
-					<h4 class="media-heading"><a href="#">Revolutionary new health tech scares some experts </a></h4>
-					<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 25 January, 2015</p>
+				<div class="col-md-12">
+					<div class="headline-row">
+						<div style="height:10px"></div>
+						<h1 class="section-title caticon sbx"><i></i><span class="sidebar-trending"></span>Trending</h1>
+						<div style="height:25px"></div>
+					</div>
+						<ul class="media-list">
+							@foreach( $trendingPosts as $post)
+							<li class="media post-spacer">
+								<div class="media-body">
+									<h4 class="media-heading"><a href="{{url('/posts/'.$post->slug)}}">{{str_limit($post->title, 55)}}</a></h4>
+									<p class="section-title caticon test"><span class="sidebar-trending"><i class="fa fa-clock-o" aria-hidden="true"></i></span>{{$post->deadline}}</p>
+								</div>
+							</li>
+							@endforeach
+						</ul>
 				</div>
 			</li>
 		</ul>
-
-
 	</div>
 </div><!--  End of upcoming deadlines row -->
 
+@foreach($menus as $menu)
+<?php
+	$menuID=-1;
+	$menuID++;
+ ?>
 <div class="sectionHeader">
-	<h1>Vacancies</1>
+	<h1>{{ $menu->name }}</1>
 </div>
 
 <div class="row" id="vacancies">
@@ -192,27 +169,27 @@
 	<div class="col-md-6">
 		<div class="bigItem item">
 			<div class="itemImg">
-				<img class="img-responsive" src="images/item1.jpg">
+				<img class="img-responsive" src="{{ url($allposts[$menuID][0]->image) }}">
 			</div>
 			<div class="gradient"></div>
 			<div class="itemContent innerItemContent">
-				<h1>NYC Love Bikers</h1>
+				<a href="{{ url('/posts/'.$allposts[$menuID][1]->slug) }}"><h1>{{ $allposts[$menuID][0]->title }}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-				<p>Lorem ipsum dolor dummy text goes here</p>
+				<span class="deadline">{{ $allposts[$menuID][0]->deadline }}</span>
+				<p>{!! str_limit( $allposts[$menuID][0]->body,100 ) !!}</p>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-3 col-sm-6">
 		<div class="mediumItem item">
 			<div class="itemImg">
-				<img class="img-responsive" src="images/item2.jpg">
+				<img class="img-responsive" src="{{ url($allposts[$menuID][1]->image) }}">
 			</div>
 			<div class="gradient"></div>
 			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
+				<a href="{{ url('/posts/'.$allposts[$menuID][1]->slug) }}"><h1>{{ $allposts[$menuID][1]->title }}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
+				<span class="deadline">{{ $allposts[$menuID][1]->deadline }}</span>
 			</div>
 		</div>
 		<!-- Divider -->
@@ -220,28 +197,28 @@
 
 		<div class="mediumItem item">
 			<div class="itemImg">
-				<img class="img-responsive" src="images/item4.jpg">
+				<img class="img-responsive" src="{{ url($allposts[$menuID][2]->image) }}">
 			</div>
 
 			<div class="gradient"></div>
 			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
+				<a href="{{ url('/posts/'.$allposts[$menuID][2]->slug) }}"><h1>{{ $allposts[$menuID][2]->title }}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
+				<span class="deadline">{{ $allposts[$menuID][2]->deadline }}</span>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-3 col-sm-6">
 		<div class="mediumItem item">
 			<div class="itemImg">
-				<img class="img-responsive" src="images/item8.jpeg">
+				<img class="img-responsive" src="{{ url($allposts[$menuID][3]->image) }}">
 			</div>
 
 			<div class="gradient"></div>
 			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
+				<a href="{{ url('/posts/'.$allposts[$menuID][3]->slug) }}"><h1>{{ $allposts[$menuID][3]->title }}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
+				<span class="deadline">{{ $allposts[$menuID][3]->deadline }}</span>
 			</div>
 		</div>
 		<!-- Divider -->
@@ -249,307 +226,35 @@
 
 		<div class="mediumItem item">
 			<div class="itemImg">
-				<img class="img-responsive" src="images/item2.jpg">
+				<img class="img-responsive" src="{{ url($allposts[$menuID][4]->image) }}">
 			</div>
+
 			<div class="gradient"></div>
 			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
+				<a href="{{ url('/posts/'.$allposts[$menuID][4]->slug) }}"><h1>{{ $allposts[$menuID][4]->title }}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
+				<span class="deadline">{{ $allposts[$menuID][4]->deadline }}</span>
 			</div>
 		</div>
 	</div>
 </div>
 	<div class="row">
+		@for($i=5;$i<9;$i++)
 		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
 			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item1.jpg">
+				<img class="img-responsive" src="{{ url($allposts[$menuID][$i]->image) }}">
 			</div>
 			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Startup released a chip for little pets</h1>
+				<a href="{{ url('/posts/'.$allposts[$menuID][$i]->slug) }}"><h1>{{ $allposts[$menuID][$i]->title }}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
+				<span class="deadline">{{ $allposts[$menuID][$i]->deadline }}</span>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>New Canon lens available</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Pioneer makes you better DJs</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Minimal organized special gadgets</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
+		@endfor
 	</div>
 </div><!--  End of vacancies row -->
 
-<div class="sectionHeader">
-	<h1>Vacancies</1>
-</div>
-
-<div class="row" id="vacancies">
-<!--Big and medium items-->
-<div class="row">
-	<div class="col-md-6">
-		<div class="bigItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item1.jpg">
-			</div>
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>NYC Love Bikers</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-				<p>Lorem ipsum dolor dummy text goes here</p>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item4.jpg">
-			</div>
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<!-- Divider -->
-		<div style="height:40px;" class="hidden-sm hidden-xs"></div>
-
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item2.jpg">
-			</div>
-
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item2.jpg">
-			</div>
-
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<!-- Divider -->
-		<div style="height:40px;" class="hidden-sm hidden-xs"></div>
-
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item6.jpg">
-			</div>
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-	</div>
-</div>
-	<div class="row">
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item1.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Startup released a chip for little pets</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>New Canon lens available</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Pioneer makes you better DJs</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Minimal organized special gadgets</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-	</div>
-</div><!--  End of vacancies row -->
-
-
-<div class="sectionHeader">
-	<h1>Vacancies</1>
-</div>
-
-<div class="row" id="vacancies">
-<!--Big and medium items-->
-<div class="row">
-	<div class="col-md-6">
-		<div class="bigItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item1.jpg">
-			</div>
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>NYC Love Bikers</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-				<p>Lorem ipsum dolor dummy text goes here</p>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item2.jpg">
-			</div>
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<!-- Divider -->
-		<div style="height:40px;" class="hidden-sm hidden-xs"></div>
-
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item6.jpg">
-			</div>
-
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item4.jpg">
-			</div>
-
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<!-- Divider -->
-		<div style="height:40px;" class="hidden-sm hidden-xs"></div>
-
-		<div class="mediumItem item">
-			<div class="itemImg">
-				<img class="img-responsive" src="images/item2.jpg">
-			</div>
-			<div class="gradient"></div>
-			<div class="itemContent innerItemContent">
-				<h1>London Stock Exchange intensified</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-	</div>
-</div>
-	<div class="row">
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item1.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Startup released a chip for little pets</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>New Canon lens available</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Pioneer makes you better DJs</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 hidden-xs item smallItem">
-			<div class="col-md-4 col-sm-4 smallItemImg">
-				<img class="img-responsive" src="images/item3.jpg">
-			</div>
-			<div class="col-md-8 col-sm-8 itemContent smallItemContent">
-				<h1>Minimal organized special gadgets</h1>
-				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Jan, 2016</span>
-			</div>
-		</div>
-	</div>
-</div><!--  End of vacancies row -->
-
-
+@endforeach
 
 <div class="sectionHeader">
 	<h1>Editors' Choice</1>
@@ -557,19 +262,21 @@
 
 <div class="row" id="special">
 	<!-- Will contain a section like "Editors' Choice"-->
+	@foreach($editorChoices as $post)
 	<div class="col-md-2 col-sm-4 col-xs-4">
 		<div class="item specialItem">
 			<div class="itemImg">
-				<img src="images/item4.jpg" class="img-responsive">
+				<img src="{{url($post->image)}}" class="img-responsive">
 			</div>
 			<div class="itemContent">
-				<h1>Lets Organize Your Office Workspace</h1>
+				<a href="{{url('/posts/'.$post->slug)}}"><h1>{{$post->title}}</h1></a>
 				<span class="fa fa-clock-o" aria-hidden="true"></span>
-				<span class="deadline">25 Mar, 2014</span>
+				<span class="deadline">{{$post->deadline}}</span>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-2 col-sm-4 col-xs-4">
+	@endforeach
+	<!-- <div class="col-md-2 col-sm-4 col-xs-4">
 		<div class="item specialItem">
 			<div class="itemImg">
 				<img src="images/item1.jpg" class="img-responsive">
@@ -628,7 +335,7 @@
 				<span class="deadline">25 Mar, 2014</span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 </div><!--  End of container -->
 </section><!--  Cingiz -->

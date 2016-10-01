@@ -21,7 +21,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             	<i class="fa fa-bars" aria-hidden="true"></i>
             </button>
-            <a class="navbar-brand" href="#">Educive.com</a>
+            <a class="navbar-brand" href="{{url('/')}}">Educive.com</a>
 					<form  action="{{ url('/math') }}" method="POST" class="col-xs-5 show-in-collapse">
 						{{csrf_field()}}
 		 			    <div class="input-group">

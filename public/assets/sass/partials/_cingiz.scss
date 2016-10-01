@@ -32,7 +32,7 @@
 	    transform: rotate(45deg);
 	    background-color: #fa5b0d;
 	}
-	.media-heading a{ 
+	.media-heading a{
 		color: black !important;
 	    font-size: 14px;
 	    font-weight: 600;
@@ -64,7 +64,7 @@
 		font-size:13px;
 		padding:7px;
 	}
-	
+
 	//Custom classes
 	.sectionHeader{
 		padding-top:30px;
@@ -84,9 +84,9 @@
 			height: 1px;
 			width:100%;
 		}
-		
+
 }
-	
+
 	//Item style for all categories
 		//Style for all item sizes
 	.item{
@@ -186,10 +186,14 @@
 	.specialItem{
 		.itemContent{
 			padding-top:10px;
+			a{
+				text-decoration:none;
+				color:black;
 			h1{
 				font-size:15px;
 				padding-bottom:10px;
 			}
+		}
 		}
 		.itemImg{
 			width:100%;
@@ -218,7 +222,7 @@
 			right:25px;
 		}
 	}
-	
+
 	//Custom styles
 	#upcoming{
 		.col-md-9{
@@ -311,4 +315,3 @@
 			}
 	}
 }//End of media query for max 768px screens
-

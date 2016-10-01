@@ -91,15 +91,13 @@ class PostController extends Controller
 		$endsAtTime = substr($endsAt,11,14).":00";
 		$endsAt = $endsAtDate.' '.$endsAtTime;
 
-		$example = Carbon::create(2016,05,03,13,15,16);
-
 		$this->user->posts()->create([
 			'title' => $request->title,
 			'body' => $request->body,
 			'deadline' => $request->deadline,
 			'image' => $url,
 			'category_id' => $request->category,
-			'starts_at' => $example,
+			'starts_at' => $startsAt,
 			'ends_at' => $endsAt,
 			'slug' =>  str_replace(" ","-",$request->title),
 			]);

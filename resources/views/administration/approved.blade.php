@@ -50,7 +50,7 @@ Already Approved Posts
 							{{ $post->updated_at }}
 						</td>
 						<td>
-							Link
+							<a href="{{ url('/posts/'.$post->slug) }}">Link</a>
 						</td>
 						<td>
 								<a href="{{ url('/post/editByModerator/'.$post->id ) }}" class='btn btn-default'>Edit</a>

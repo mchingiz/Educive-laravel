@@ -15,7 +15,7 @@
 	display: block;
 }
 .infoPhoto {
-    .fa{  
+    .fa{
         padding:5px;
         padding-bottom:20px;
         color: #FA5B0D;
@@ -128,5 +128,14 @@ ul.post-tags{
 .post {
     position: relative;
 }
+.media-left{
+  height:90px;
+  width:90px;
+  overflow:hidden;
+  img{
+    width:90px;
+    margin:0;
+    height:90px;
+  }
 }
-
+}
