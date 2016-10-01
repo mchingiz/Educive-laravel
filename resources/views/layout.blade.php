@@ -22,6 +22,7 @@
             	<i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <a class="navbar-brand" href="{{url('/')}}">Educive.com</a>
+
 					<form  action="{{ url('/math') }}" method="POST" class="col-xs-5 show-in-collapse">
 						{{csrf_field()}}
 		 			    <div class="input-group">
@@ -62,8 +63,9 @@
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Settings</a></li>
+
 							@if( $user->type == 'company' )
+								<li><a href="companyedit/{{ $user->company->id }}">Settings</a></li>
 								<li><a href="/posts">My Posts</a></li>
 							@elseif( $user->type == 'user' )
 								<li><a href="/myfollowings">Following</a></li>
