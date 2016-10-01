@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->string('image');
             $table->date('deadline');
+            $table->DateTime('starts_at');
+            $table->DateTime('ends_at');
             $table->integer('count');
             $table->string('slug');
             $table->timestamps();
