@@ -9,6 +9,10 @@ function Navbar(){
     }
 }
 
+
+$("#sliderItem1").hide();
+$("#sliderItem2").hide();
+
 jQuery(document).ready(function($) {
 
 	// Slider
@@ -19,6 +23,7 @@ jQuery(document).ready(function($) {
 		if(current==0){
 			current=items;
 		}
+    console.log("djd")
 		// Removes all animation classes and hide inactive elements
 		$("div[id*='sliderItem']").removeClass("animateLeft").removeClass("animateRight").hide();
 		// Adds animation to currently active item
@@ -49,7 +54,7 @@ jQuery(document).ready(function($) {
 	})
 
 
-  
+
 
   //Menu
 

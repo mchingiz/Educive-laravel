@@ -26,6 +26,7 @@ class HomeController extends Controller
 
     public function index()
     {
+
         return view('home');
     }
 
@@ -34,6 +35,14 @@ class HomeController extends Controller
           	->orderBy('count', 'desc')
 					->limit(8)
           	->get();
+
+				$lastPosts = DB::table('posts')
+		  								->where('approved', '=', 1)
+		  								->where('published', '=', 1)
+		                  ->orderBy('id', 'desc')
+		  								->limit(9)
+		                  ->get();
+
 			$editorChoices = DB::table('posts')
 					->where('approved', '=', 1)
 					->where('published', '=', 1)
@@ -56,7 +65,7 @@ class HomeController extends Controller
 					->get();
 				array_push($allposts,$menuPosts);
 			}
-      	return view('index',compact('trendingPosts','editorChoices','allposts'));
+      	return view('index',compact('trendingPosts','editorChoices','allposts','lastPosts'));
     }
     public function contact()
     {
