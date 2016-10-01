@@ -29,22 +29,50 @@ class HomeController extends Controller
     }
 
     public function mainpage()
-    { $menus=Menu::all();
-      return view('index');
-        return view('index',compact('menus'));
+    { 	$trendingPosts= DB::table('posts')
+                ->orderBy('count', 'desc')
+								->limit(8)
+                ->get();
+				$editorChoices = DB::table('posts')
+									->where('approved', '=', 1)
+									->where('published', '=', 1)
+									->inRandomOrder()
+									->limit(6)
+									->get();
+        return view('index',compact('trendingPosts','editorChoices'));
     }
     public function contact()
     {
       return view('contact');
     }
     public function showPost($slug)
-    { $post=Post::where('slug','=',$slug)->get();
+    {
+		 $post=Post::where('slug','=',$slug)->get();
       $post=$post[0];
 			$post->count=$post->count+1;
 			$post->update([
 						'count' => $post->count+1,
 					]);
-      return view('news',compact('post'));
+
+			$trendingPosts= DB::table('posts')
+		                ->orderBy('count', 'desc')
+										->limit(6)
+		                ->get();
+			$otherPosts = DB::table('posts')
+							        ->where('approved', '=', 1)
+							        ->where('published', '=', 1)
+											->inRandomOrder()
+											->limit(5)
+							        ->get();
+
+			$authorPosts = DB::table('posts')
+										->where('user_id', '=', $post->user_id)
+										->where('published', '=', 1)
+										->where('approved', '=', 1)
+										->inRandomOrder()
+										->limit(2)
+										->get();
+      return view('news',compact('post','trendingPosts','otherPosts','authorPosts'));
     }
 
     public function showCategory($menu ,$submenu){
