@@ -22,21 +22,10 @@ class CategoryController extends Controller
 		view()->share('user',$this->user);
 	}
     public function math(){
-
-
     	$categories=Category::findOrFail(1);
     	$posts= $categories->posts;
     	$posts=Post::all();
-        $posts->paginate(3);
         return view('category', compact('posts'));
-
-    }
-
-    public function index(){
-            $posts= Post::all();
-            $posts->paginate(1);
-            return view('category',compact('posts'))
-
 
     }
      public function mysearch(Request $request){
