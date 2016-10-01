@@ -26,24 +26,19 @@ class CategoryController extends Controller
 
     	$categories=Category::findOrFail(1);
     	$posts= $categories->posts;
-
-
-
-
-
-
-
-
     	$posts=Post::all();
-
-
-
-
+        $posts->paginate(3);
         return view('category', compact('posts'));
 
     }
 
+    public function index(){
+            $posts= Post::all();
+            $posts->paginate(1);
+            return view('category',compact('posts'))
 
+
+    }
      public function mysearch(Request $request){
 
 

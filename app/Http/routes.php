@@ -93,6 +93,7 @@ Route::auth();
  Route::get('/home', 'HomeController@index');
 
 Route::get('/math','CategoryController@math');
+Route::get('/math','CategoryController@index');
 Route::post('/math','CategoryController@mysearch');
 
 
