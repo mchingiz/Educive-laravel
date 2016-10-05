@@ -23,14 +23,14 @@ Add news
 				CKEDITOR.replace( 'body' );
          </script>
 		</div>
-		<div class="input-group">
+		<!-- <div class="input-group">
 			<label for="startsAt">Event starts at</label>
 			<input type="datetime-local" name="startsAt" id="startsAt" class="form-control">
 		</div>
 		<div class="input-group">
 			<label for="endsAt">Event ends at</label>
 			<input type="datetime-local" name="endsAt" id="endsAt" class="form-control">
-		</div>
+		</div> -->
 		<div class="input-group" style='padding:10px 0'>
 			<label for="deadline">Deadline</label>
 			<input type="date" name="deadline" id="deadline" class='form-control'value="{{old('deadline')}}">

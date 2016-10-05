@@ -65,7 +65,7 @@
 						<ul class="dropdown-menu">
 
 							@if( $user->type == 'company' )
-								<li><a href="companyedit/{{ $user->company->id }}">Settings</a></li>
+								<li><a href="{{url('/companyedit/'.$user->company->id)}}">Settings</a></li>
 								<li><a href="/posts">My Posts</a></li>
 							@elseif( $user->type == 'user' )
 								<li><a href="/myfollowings">Following</a></li>
