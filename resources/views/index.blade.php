@@ -72,7 +72,7 @@
 					<div class="itemImg">
 						<img class="img-responsive" src="{{url($lastPosts[$i]->image)}}">
 					</div>
-					<div class="gradient"></div>
+					
 					<div class="itemContent outerItemContent">
 						<a style="text-decoration:none; color:black" href="{{url('/posts/'.$lastPosts[$i]->slug)}}">
 							<h1>{!!str_limit($lastPosts[$i]->title, 70)!!}</h1>
