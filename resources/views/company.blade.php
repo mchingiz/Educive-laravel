@@ -12,17 +12,19 @@
 			</div>
 			<div class="col-md-9 col-sm-12">
 				<h1>{{ $company->name }}</h1>
-				@unless( $user->type == 'company')
-					@if(!$follow)
-						<form method="post" action="{{ url('/follow/'.$user->id.'/'.$company->id) }}" id="follow">
-							{{ csrf_field() }}
-							<input type="submit" class="btn btn-success" value="Follow">
-						</form>
-					@else
-						<form method="post" action="{{ url('/unfollow/'.$user->id.'/'.$company->id) }}" id="follow">
-							{{ csrf_field() }}
-							<input type="submit" class="btn btn-warning" value="Unfollow">
-						</form>
+				@unless( $follow==-1 || $user->type == 'company' )
+					@if($follow>=0)
+						@if(!$follow)
+							<form method="post" action="{{ url('/follow/'.$user->id.'/'.$company->id) }}" id="follow">
+								{{ csrf_field() }}
+								<input type="submit" class="btn btn-success" value="Follow">
+							</form>
+						@else
+							<form method="post" action="{{ url('/unfollow/'.$user->id.'/'.$company->id) }}" id="follow">
+								{{ csrf_field() }}
+								<input type="submit" class="btn btn-warning" value="Unfollow">
+							</form>
+						@endif
 					@endif
 				@endunless
 				<p class="link">

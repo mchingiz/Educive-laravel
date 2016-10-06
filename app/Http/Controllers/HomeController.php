@@ -125,7 +125,11 @@ class HomeController extends Controller
 	public function company(Company $company){
 		$posts = Post::where('user_id','=',$company->user_id)->get();
 
-		$follow = DB::table('followers')->where('user_id','=', $this->user->id)->where('follow_id','=', $company->id)->count();
+		if(Auth::user()){
+			$follow = DB::table('followers')->where('user_id','=', $this->user->id)->where('follow_id','=', $company->id)->count();
+		}else{
+			$follow=-1;
+		}
 		return view('company',compact('company','posts','follow'));
 	}
 }

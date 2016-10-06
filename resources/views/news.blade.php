@@ -25,7 +25,7 @@
 				<img src="{{$post->image}}" alt="Post img">
 				<br>
 				<br>
-				<span class="fa fa-clock-o" aria-hidden="true">{{$post->deadline}}</span>  <span class="fa fa-rss" aria-hidden="true"> {{$post->user->name}}</span></br>
+				<span class="fa fa-clock-o" aria-hidden="true">{{$post->deadline}}</span>  <span class="fa fa-rss" aria-hidden="true"><a href="{{url('/company/'.$post->user->company->id)}}">{{$post->user->name }}</a></span></br>
 				<br>
 			</div>
 				<p>{!!$post->body!!}</p>

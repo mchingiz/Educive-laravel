@@ -138,10 +138,11 @@
 		</ul>
 	</div>
 </div><!--  End of upcoming deadlines row -->
-
-@foreach($menus as $menu)
 <?php
 	$menuID=-1;
+?>
+@foreach($menus as $menu)
+<?php
 	$menuID++;
  ?>
 <div class="sectionHeader">
