@@ -43,7 +43,7 @@ Your all posts
 			@foreach( $posts as $post)
 				<tr>
 					<td>{{ $post->title }}</td>
-					<td>{!! $post->body !!}</td>
+					<td>{!! str_limit($post->body, 255) !!}</td>
 					<td><img src='{{ $post->image }}'></td>
 					<td><a href="{{url('/posts/'.$post->slug)}}" class='btn btn-default'>View</a></td>
 					<td><a href="{{ url('/post/'.$post->id) }}" class='btn btn-primary'>Edit</a></td>

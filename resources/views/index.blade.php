@@ -15,7 +15,7 @@
 @for($i=1;$i<=3;$i++)
 					<div class="bigItem item" id="sliderItem{{$i}}">
 						<div class="itemImg">
-							<img class="img-responsive" src="{{url($lastPosts[0]->image)}}">
+							<img class="img-responsive" src="{{url($lastPosts[$i]->image)}}">
 						</div>
 						<div class="gradient"></div>
 						<div class="itemContent innerItemContent">

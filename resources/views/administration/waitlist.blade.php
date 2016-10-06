@@ -27,7 +27,7 @@ Approval pending posts
 						Updated time
 					</td>
 					<td>
-						<a href="{{ url('/posts/'.$post->slug) }}">Link</a>
+						Link
 					</td>
 					<td colspan="3">
 						Operations
@@ -50,7 +50,7 @@ Approval pending posts
 							{{ $post->updated_at }}
 						</td>
 						<td>
-							Link
+							<a href="{{ url('/posts/'.$post->slug) }}">Link</a>
 						</td>
 						<td>
 							<form method="post" action="{{ url('/post/approve/'.$post->id) }}">
@@ -61,6 +61,7 @@ Approval pending posts
 						<td>
 								<a href="{{ url('/post/editByModerator/'.$post->id ) }}" class='btn btn-warning'>Edit</a>
 						</td>
+
 						<td>
 								<a href="{{ url('/post/deleteByModerator/'.$post->id ) }}" class='btn btn-danger'>Delete</a>
 						</td>
