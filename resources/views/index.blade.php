@@ -22,7 +22,7 @@
 							<a style="text-decoration:none; color:black" href="{{url('/posts/'.$lastPosts[$i]->slug)}}"><h1>{{$lastPosts[$i]->title}}</h1></a>
 							<span class="fa fa-clock-o" aria-hidden="true"></span>
 							<span class="deadline">{{$lastPosts[$i]->deadline}}</span>
-							<p>{!!str_limit($lastPosts[$i]->body, 255)!!}</p>
+							<p>{!!str_limit($lastPosts[$i]->body, 150)!!}</p>
 						</div>
 					</div>
 @endfor
